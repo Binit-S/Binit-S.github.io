@@ -29,7 +29,7 @@ lerpRing();
 
 // Expand cursor on interactive elements
 const interactables = document.querySelectorAll(
-  'a, button, .badge, .social-icon, .photo-img, .project-card, .skill-list li'
+  'a, button, .badge, .social-icon, .photo-img, .proj-block, .skill-list li'
 );
 interactables.forEach((el) => {
   el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
@@ -83,22 +83,56 @@ badges.forEach((badge, i) => {
 });
 
 
-/* ── 5. PROJECT CARDS — stagger in on scroll ── */
-const projectCards = document.querySelectorAll('.project-card');
+/* ── 5. PROJECT BLOCKS — stagger reveal on scroll ── */
+const projBlocks = document.querySelectorAll('.proj-block');
 
-const cardObserver = new IntersectionObserver((entries) => {
+const blockObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
-      const i = [...projectCards].indexOf(entry.target);
+      const i = [...projBlocks].indexOf(entry.target);
       setTimeout(() => {
-        entry.target.classList.add('visible');
-      }, i * 120);
-      cardObserver.unobserve(entry.target);
+        entry.target.classList.add('revealed');
+      }, i * 140);
+      blockObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.1 });
 
-projectCards.forEach(card => cardObserver.observe(card));
+projBlocks.forEach(block => blockObserver.observe(block));
+
+
+/* ── 5b. TOPOGRAPHIC CANVAS BACKGROUND ── */
+const topoCanvas = document.getElementById('topoCanvas');
+if (topoCanvas) {
+  const ctx = topoCanvas.getContext('2d');
+  function resizeTopo() {
+    const rect = topoCanvas.parentElement.getBoundingClientRect();
+    topoCanvas.width = rect.width * window.devicePixelRatio;
+    topoCanvas.height = rect.height * window.devicePixelRatio;
+    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    drawTopo(rect.width, rect.height);
+  }
+
+  function drawTopo(w, h) {
+    ctx.clearRect(0, 0, w, h);
+    const layers = 18;
+    for (let i = 0; i < layers; i++) {
+      ctx.beginPath();
+      ctx.strokeStyle = `rgba(255,255,255,${0.03 + Math.random() * 0.06})`;
+      ctx.lineWidth = 0.8;
+      const yBase = (h / layers) * i + Math.random() * 20;
+      ctx.moveTo(0, yBase);
+      for (let x = 0; x < w; x += 30) {
+        const y = yBase + Math.sin(x * 0.008 + i * 0.7) * (15 + i * 2) + Math.cos(x * 0.003 + i) * 10;
+        ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+    }
+  }
+
+  resizeTopo();
+  window.addEventListener('resize', resizeTopo);
+}
 
 
 /* ── 6. SKILLS ICON — rotate on card hover ── */

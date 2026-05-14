@@ -8,7 +8,10 @@
   <link rel="icon" type="image/x-icon" href="logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Kaushan+Script&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Kaushan+Script&family=JetBrains+Mono:wght@400;500;700&family=Ubuntu+Condensed&family=Ubuntu+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/google-sans" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -189,50 +192,114 @@
 
   <!-- ── SECTION 2: PROJECTS ── -->
   <section class="snap-section projects-section" id="projects">
-    <div class="section-inner">
-      <p class="eyebrow">✦ Selected Work</p>
-      <h2 class="sec-title">Projects &amp;<br>Tech Stack</h2>
-      <div class="projects-grid">
-        <div class="project-card">
-          <span class="proj-num">01</span>
-          <span class="proj-tag">AI × Web</span>
-          <h3 class="proj-name">AI-Powered Chat App</h3>
-          <p class="proj-desc">A real-time chat application with Gemini API integration for smart context-aware replies
-            and suggestions.</p>
-          <div class="proj-footer">
-            <span class="p-badge">Next.js</span>
-            <span class="p-badge">Gemini</span>
-            <span class="p-badge">Firebase</span>
-            <a href="#" class="p-link">↗</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <span class="proj-num">02</span>
-          <span class="proj-tag">Full-Stack</span>
-          <h3 class="proj-name">Dev Portfolio Builder</h3>
-          <p class="proj-desc">A dynamic platform for developers to generate stunning portfolio pages with drag-and-drop
-            components.</p>
-          <div class="proj-footer">
-            <span class="p-badge">React</span>
-            <span class="p-badge">Node.js</span>
-            <span class="p-badge">MongoDB</span>
-            <a href="#" class="p-link">↗</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <span class="proj-num">03</span>
-          <span class="proj-tag">Hackathon</span>
-          <h3 class="proj-name">Cloud Cost Optimizer</h3>
-          <p class="proj-desc">Built at a 36-hour hackathon — detects idle GCP resources and auto-scales based on ML
-            usage patterns.</p>
-          <div class="proj-footer">
-            <span class="p-badge">Cloud Run</span>
-            <span class="p-badge">Express</span>
-            <a href="#" class="p-link">↗</a>
-          </div>
-        </div>
+
+    <!-- ── HEADER ROW ── -->
+    <div class="proj-header">
+      <h2 class="proj-header-title">PROJECTS</h2>
+      <div class="proj-mountain-wrap">
+        <img src="mountain.png" alt="Mountain wireframe" class="proj-mountain-img" />
       </div>
     </div>
+
+    <!-- ── PROJECTS BENTO GRID ── -->
+    <div class="proj-bento">
+
+      <!-- PROJECT 1 — Supply Chain Nexus -->
+      <div class="proj-block proj-block-1" data-project="1">
+        <a href="https://github.com/Binit-S/supply-chain-nexus" class="proj-block-inner" target="_blank" rel="noopener">
+          <!-- Default state -->
+          <div class="proj-default">
+            <p class="proj-stack">REACT - NEXT.JS - GEMINI API - FIREBASE - GOOGLE CLOUD RUN</p>
+            <span class="proj-block-num">01</span>
+            <h3 class="proj-block-name">SUPPLY CHAIN<br>NEXUS</h3>
+          </div>
+          <!-- Hover state -->
+          <div class="proj-expanded proj-expanded--dark">
+            <h3 class="proj-exp-name">SUPPLY CHAIN<br>NEXUS</h3>
+            <span class="proj-exp-num">01</span>
+            <p class="proj-exp-desc">An AI-powered logistics dashboard that detects<br>global supply chain disruptions in real time.<br>Scores live geopolitical news (0-100) using Gemini<br>AI, cutting detection time from hours to under 2<br>minutes. Features a Human-in-the-Loop rerouting<br>system with sea/air/road alternatives and one-<br>click operator approval.</p>
+            <span class="proj-exp-view">VIEW PROJECT</span>
+            <div class="proj-exp-line"></div>
+            <svg class="proj-exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      <!-- PROJECT 2 — NutriSync -->
+      <div class="proj-block proj-block-2" data-project="2">
+        <a href="https://github.com/Binit-S/nutrisync" class="proj-block-inner" target="_blank" rel="noopener">
+          <!-- Default state -->
+          <div class="proj-default">
+            <p class="proj-stack">NEXT.JS - PYTHON - FIREBASE - GEMINI API - DOCKER</p>
+            <span class="proj-block-num">02</span>
+            <h3 class="proj-block-name">NUTRISYNC</h3>
+          </div>
+          <!-- Hover state -->
+          <div class="proj-expanded proj-expanded--dark">
+            <h3 class="proj-exp-name">NUTRISYNC</h3>
+            <span class="proj-exp-num">02</span>
+            <p class="proj-exp-desc">A full-stack health app with an AI dietitian<br>agent that creates personalized meal plans,<br>tracks symptoms, and generates grocery lists.<br>Streams AI responses in real time without<br>blocking the UI, with cross-platform sync to<br>user schedules.</p>
+            <span class="proj-exp-view">VIEW PROJECT</span>
+            <div class="proj-exp-line"></div>
+            <svg class="proj-exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      <!-- PROJECT 3 — Mock.io -->
+      <div class="proj-block proj-block-3" data-project="3">
+        <a href="https://github.com/Binit-S?tab=repositories" class="proj-block-inner" target="_blank" rel="noopener">
+          <!-- Default state -->
+          <div class="proj-default">
+            <p class="proj-stack">NODE.JS - EXPRESS.JS - MONGODB</p>
+            <span class="proj-block-num">03</span>
+            <h3 class="proj-block-name">MOCK.IO</h3>
+          </div>
+          <!-- Hover state -->
+          <div class="proj-expanded proj-expanded--dark">
+            <h3 class="proj-exp-name">MOCK.IO</h3>
+            <span class="proj-exp-num">03</span>
+            <p class="proj-exp-desc">A peer-to-peer interview platform where two<br>users take turns as interviewer and<br>interviewee. AI reads both resumes and<br>generates tailored interview questions<br>automatically. Built with JWT auth and a full<br>resume parsing pipeline.</p>
+            <span class="proj-exp-view">VIEW PROJECT</span>
+            <div class="proj-exp-line"></div>
+            <svg class="proj-exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      <!-- PROJECT 4 — +More Projects -->
+      <div class="proj-block proj-block-4" data-project="4">
+        <a href="https://github.com/Binit-S" class="proj-block-inner" target="_blank" rel="noopener">
+          <!-- Default state -->
+          <div class="proj-default">
+            <span class="proj-more-text">+MORE PROJECTS</span>
+            <div class="proj-github-icon" title="GitHub">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+              </svg>
+            </div>
+            <p class="proj-quote-label">EXPANDING<br>TECH<br>HORIZONS</p>
+            <p class="proj-quote-text">THE IDEA IS TO<br>KEEP BUILDING MORE</p>
+          </div>
+          <!-- Hover state -->
+          <div class="proj-expanded proj-expanded--orange">
+            <span class="proj-exp-currently">CURRENTLY BUILDING</span>
+            <span class="proj-exp-enter">ENTER LABS</span>
+            <svg class="proj-exp-enter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M7 7L17 17M17 17H7M17 17V7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+    </div><!-- /proj-bento -->
+
   </section>
 
   <!-- ── SECTION 3: CONTACT ── -->

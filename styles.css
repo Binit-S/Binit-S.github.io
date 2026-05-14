@@ -741,151 +741,446 @@ body.cursor-hover #cursor-ring {
 }
 
 /* ════════════════════════════════════════
-   SECTION 2 — PROJECTS
+   SECTION 2 — PROJECTS (100vh Responsive)
 ════════════════════════════════════════ */
 .projects-section {
-  background: var(--dark-bg);
-  align-items: flex-start;
-  overflow-y: auto;
-}
-
-.section-inner {
-  width: min(1200px, 92vw);
-  padding: 80px 0 100px;
-}
-
-.eyebrow {
-  font-family: "Cascadia Code", monospace;
-  font-size: 13px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--lime);
-  margin-bottom: 16px;
-}
-
-.sec-title {
-  font-family: "Jersey 20", sans-serif;
-  font-size: clamp(48px, 6vw, 80px);
-  font-weight: 400;
-  color: var(--white);
-  line-height: 0.95;
-  margin-bottom: 52px;
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
-}
-
-.project-card {
-  background: #111;
-  border-radius: 20px;
-  padding: 28px;
-  border: 1px solid #222;
+  background: #111111;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-  cursor: default;
-
-  /* stagger in via JS class */
-  opacity: 0;
-  transform: translateY(28px);
+  scroll-snap-align: start;
 }
 
-.project-card.visible {
+/* ── HEADER ── */
+.proj-header {
+  position: relative;
+  width: 100vw;
+  height: 27.04vh; /* 277 / 1024.3334 */
+  background: #111111 url("Noise & Texture.png") center/cover no-repeat;
+  overflow: hidden;
+}
+
+.proj-header-title {
+  position: absolute;
+  top: 16.24%; /* 45 / 277 */
+  left: 2.85vw; /* 41 / 1440 */
+  width: auto;
+  font-family: "Google Sans Code", "Cascadia Code", monospace;
+  font-size: 6.66vw; /* 96 / 1440 */
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+/* Mountain image */
+.proj-mountain-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.proj-mountain-img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── BENTO GRID ── */
+.proj-bento {
+  display: grid;
+  grid-template-columns: 50vw 50vw;
+  grid-template-rows: 36.48vh 36.48vh; /* 373.667 / 1024.3334 */
+  width: 100vw;
+  height: 72.96vh;
+}
+
+/* All project blocks */
+.proj-block {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.proj-block-inner {
+  position: absolute;
+  inset: 0;
+}
+
+/* ── DEFAULT STATE ── */
+.proj-default {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.proj-block:hover .proj-default {
+  opacity: 0;
+}
+
+/* ── EXPANDED / HOVER STATE ── */
+.proj-expanded {
+  position: absolute;
+  inset: 0;
+  padding: 4.44vw; /* 32px roughly */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  opacity: 0;
+  transition: opacity 0.4s ease 0.1s;
+  z-index: 2;
+}
+
+.proj-block:hover .proj-expanded {
+  opacity: 1;
+}
+
+/* ── ABSOLUTE POSITIONING WITH PERCENTAGES (1440x1024 basis) ── */
+
+/* Stack text (e.g. REACT - NEXT.JS ...) */
+.proj-stack {
+  position: absolute;
+  top: 26.49%; /* 99 / 373.667 */
+  left: 2.77%; /* 20 / 720 */
+  width: 78.47%; /* 565 / 720 */
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 1.66vw; /* 24 / 1440 */
+  font-weight: 700;
+  line-height: 1.2;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+/* ── ABSOLUTE POSITIONING WITH PERCENTAGES (1440x1024 basis) ── */
+
+/* Stack text (e.g. REACT - NEXT.JS ...) */
+.proj-stack {
+  position: absolute;
+  top: 26.49%; /* 99 / 373.667 */
+  left: 2.77%; /* 20 / 720 */
+  width: 78.47%; /* 565 / 720 */
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 2.34vh; /* 24 / 1024.33 */
+  font-weight: 700;
+  line-height: 1.2;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+/* Name text (e.g. SUPPLY CHAIN NEXUS) */
+.proj-block-name {
+  position: absolute;
+  top: 49.86%; /* 186.33 / 373.667 */
+  left: 2.77%;
+  width: 90%;
+  font-family: "Ubuntu Condensed", sans-serif;
+  font-size: 6.25vh; /* 64 / 1024.33 */
+  font-weight: 300; 
+  line-height: 1;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+/* Number text (e.g. 01, 02) */
+.proj-block-num {
+  position: absolute;
+  top: 5.35%; /* 20 / 373.667 */
+  right: 2.77%; /* 20 / 720 */
+  font-family: "Ubuntu Condensed", sans-serif;
+  font-size: 12.5vh; /* 128 / 1024.33 */
+  font-weight: 400;
+  line-height: 1;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+/* Line under Number */
+.proj-block-num::after {
+  content: "";
+  position: absolute;
+  top: 0.95em; /* 121.5px / 128px font size = 0.95em perfectly relative */
+  right: 0;
+  width: 9.47vh; /* 97px / 1024.33px */
+  border-bottom: 2px solid #FFFFFF;
+}
+
+/* ── BLOCK 1 — RED ── */
+.proj-block-1 {
+  background: #FE2725;
+}
+
+/* ── BLOCK 2 — BLACK ── */
+.proj-block-2 {
+  background: #000000;
+}
+.proj-block-2 .proj-block-name {
+  top: 59.76%; /* 223.33 / 373.667 for single line centering */
+}
+
+/* ── BLOCK 3 — DARK RED ── */
+.proj-block-3 {
+  background: #BC1616;
+}
+
+/* ── BLOCK 4 — GRAY / MORE PROJECTS ── */
+.proj-block-4 {
+  background: #EFEFEF;
+}
+
+/* Block 4 inner elements */
+.proj-more-text {
+  position: absolute;
+  top: 26.49%; /* 99 / 373.667 */
+  left: 2.77%; /* 20 / 720 */
+  font-family: "Ubuntu Condensed", sans-serif;
+  font-size: 3.51vh; /* 36 / 1024.33 */
+  font-weight: 400;
+  color: #000000;
+  letter-spacing: 0;
+  margin: 0;
+}
+
+.proj-github-icon {
+  position: absolute;
+  top: 5.35%; /* 20 / 373.667 */
+  right: 2.77%; /* 20 / 720 */
+  color: #000000;
+  transition: transform 0.3s ease, color 0.3s ease;
+  width: 3.12vh; /* 32 / 1024.33 */
+  height: 3.12vh;
+}
+.proj-github-icon svg {
+  width: 100%;
+  height: 100%;
+}
+.proj-github-icon:hover {
+  transform: scale(1.15) rotate(-8deg);
+}
+
+.proj-quote-label {
+  position: absolute;
+  top: 74.17%; /* 277.17 / 373.667 */
+  left: 2.77%; /* 20 / 720 */
+  font-family: "Ubuntu Condensed", sans-serif;
+  font-size: 2.34vh; /* 24 / 1024.33 */
+  font-weight: 400;
+  color: #000000;
+  text-transform: uppercase;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.proj-quote-text {
+  position: absolute;
+  top: 70.56%; /* 263.67 / 373.667 */
+  right: 2.77%; /* 20 / 720 */
+  font-family: "Ubuntu Condensed", sans-serif;
+  font-size: 3.32vh; /* 34 / 1024.33 */
+  font-weight: 400;
+  color: #000000;
+  text-transform: uppercase;
+  line-height: 1.15;
+  text-align: right;
+  margin: 0;
+  max-width: 60%;
+}
+
+/* ═══════════════════════════════════════════
+   HOVER / EXPANDED STATE STYLES
+═══════════════════════════════════════════ */
+
+/* Make entire block inner act as a clickable anchor without standard link styling */
+.proj-block-inner {
+  text-decoration: none;
+  display: block;
+}
+
+/* -- Dark variant (Blocks 1-3) -- */
+.proj-expanded--dark {
+  background: #111111;
+}
+
+/* -- Orange variant (Block 4) -- */
+.proj-expanded--orange {
+  background: #FF4721;
+}
+
+/* Number in expanded state (No underline per design) */
+.proj-exp-num {
+  position: absolute;
+  top: 5.35%; /* 20 / 373.667 */
+  right: 2.77%; /* 20 / 720 */
+  font-family: "Ubuntu Condensed", sans-serif;
+  font-size: 12.5vh; /* 128 / 1024.33 */
+  font-weight: 400;
+  line-height: 1;
+  color: #FE2725; /* Orange-red accent */
+  margin: 0;
+}
+
+/* Name in expanded state */
+.proj-exp-name {
+  position: absolute;
+  top: 5.35%; /* 20 / 373.667 */
+  left: 2.77%;
+  width: 70%;
+  font-family: "Ubuntu Condensed", sans-serif;
+  font-size: 3.51vh; /* 36 / 1024.33 */
+  font-weight: 300;
+  line-height: 1;
+  color: #FE2725; /* Orange-red accent */
+  margin: 0;
+}
+
+/* Description text */
+.proj-exp-desc {
+  position: absolute;
+  top: 38.8%; /* 145 / 373.667 */
+  left: 2.77%; /* 20 / 720 */
+  width: 85.57%; /* calc(100% - 104px) */
+  font-family: "Google Sans Code", "Cascadia Code", monospace;
+  font-size: 1.56vh; /* 16 / 1024.33 */
+  font-weight: 400;
+  line-height: 1.5;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+/* View Project Elements */
+.proj-exp-view {
+  position: absolute;
+  bottom: 9.54%; /* 35.67 / 373.667 */
+  left: 2.77%;
+  font-family: "Google Sans Code", "Cascadia Code", monospace;
+  font-size: 1.36vh; /* 14 / 1024.33 */
+  font-weight: 400;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.proj-exp-line {
+  position: absolute;
+  bottom: 3.65%; /* 13.67 / 373.667 */
+  left: 2.77%;
+  right: 6.63%; /* 47.79 / 720 */
+  height: 1px;
+  background: #FFFFFF;
+  opacity: 0.5;
+}
+
+.proj-exp-icon {
+  position: absolute;
+  bottom: 3.65%; /* 13.67 / 373.667 */
+  right: 2.77%;
+  width: 1.56vh; /* 16 / 1024.33 */
+  height: 1.56vh;
+  color: #FFFFFF;
+  transform: translateY(50%); /* Centered on the line */
+  transition: transform 0.3s ease;
+}
+
+.proj-block-inner:hover .proj-exp-icon {
+  transform: translateY(50%) translate(2px, -2px);
+}
+
+/* Block 4 Expanded Elements */
+.proj-exp-currently {
+  position: absolute;
+  top: 5.35%; /* 20 / 373.667 */
+  left: 2.77%; /* 20 / 720 */
+  font-family: "Ubuntu Mono", monospace;
+  font-size: 2.34vh; /* 24 / 1024.33 */
+  font-weight: 700;
+  color: #111111;
+}
+
+.proj-exp-enter {
+  position: absolute;
+  bottom: 5.35%; /* 20 / 373.667 */
+  right: 5.54%; /* Offset slightly for the arrow */
+  font-family: "Ubuntu Condensed", sans-serif;
+  font-size: 9.37vh; /* 96 / 1024.33 */
+  font-weight: 400;
+  line-height: 1;
+  color: #111111;
+  letter-spacing: -0.02em;
+}
+
+.proj-exp-enter-icon {
+  position: absolute;
+  bottom: 6%; 
+  right: 2.77%;
+  width: 3.12vh; /* 32 / 1024.33 */
+  height: 3.12vh;
+  color: #111111;
+  transition: transform 0.3s ease;
+}
+
+.proj-block-inner:hover .proj-exp-enter-icon {
+  transform: translate(3px, 3px);
+}
+
+@media (max-width: 900px) {
+  .projects-section {
+    height: auto;
+    min-height: 100vh;
+  }
+  .proj-header {
+    height: 25vh;
+  }
+  .proj-header-title {
+    font-size: 10vw; /* Scale up slightly on mobile */
+  }
+  .proj-bento {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    height: auto;
+  }
+  .proj-block {
+    height: 40vh; /* Fixed height for blocks on mobile so absolute children have a bounding box */
+  }
+  .proj-stack, .proj-quote-label { font-size: 3.5vw; }
+  .proj-block-name { font-size: 8vw; }
+  .proj-block-num { font-size: 16vw; }
+  .proj-more-text { font-size: 6vw; }
+  .proj-quote-text { font-size: 4.5vw; }
+  .proj-github-icon { width: 6vw; height: 6vw; }
+  .proj-block-num::after { width: 12vw; top: 1.1em; } /* Adjust line top for mobile */
+  
+  /* Expanded state mobile overrides */
+  .proj-exp-num { font-size: 16vw; }
+  .proj-exp-name { font-size: 6vw; }
+  .proj-exp-desc { font-size: 2.5vw; width: 90%; }
+  .proj-exp-view { font-size: 2vw; }
+  .proj-exp-line { right: 10%; }
+  .proj-exp-icon { width: 3vw; height: 3vw; }
+  .proj-exp-currently { font-size: 4vw; }
+  .proj-exp-enter { font-size: 12vw; right: 8%; }
+  .proj-exp-enter-icon { width: 5vw; height: 5vw; bottom: 8%; }
+}
+
+/* ── BLOCK REVEAL ANIMATION ── */
+.proj-block {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.proj-block.revealed {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.6s ease, transform 0.6s ease,
-    border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-6px) !important;
-  border-color: rgba(207, 253, 115, 0.3);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.proj-num {
-  font-family: "Jersey 20", sans-serif;
-  font-size: 72px;
-  color: #222;
-  position: absolute;
-  right: 20px;
-  top: 8px;
-  line-height: 1;
-  transition: color 0.3s;
-}
-
-.project-card:hover .proj-num {
-  color: rgba(207, 253, 115, 0.12);
-}
-
-.proj-tag {
-  display: inline-block;
-  font-family: "Cascadia Code", monospace;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: #222;
-  color: #888;
-  border-radius: 4px;
-  padding: 4px 10px;
-  margin-bottom: 14px;
-}
-
-.proj-name {
-  font-family: "Jersey 20", sans-serif;
-  font-size: 22px;
-  font-weight: 400;
-  color: var(--white);
-  margin-bottom: 10px;
-}
-
-.proj-desc {
-  font-size: 14px;
-  color: #888;
-  line-height: 1.65;
-  font-family: "Cascadia Code", monospace;
-}
-
-.proj-footer {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 20px;
-  flex-wrap: wrap;
-}
-
-.p-badge {
-  font-family: "Cascadia Code", monospace;
-  font-size: 11px;
-  color: var(--lime);
-  background: rgba(207, 253, 115, 0.08);
-  border-radius: 3px;
-  padding: 3px 8px;
-}
-
-.p-link {
-  margin-left: auto;
-  width: 28px;
-  height: 28px;
-  background: #222;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
-  color: #888;
-  text-decoration: none;
-  transition: background 0.2s, color 0.2s, transform 0.2s;
-}
-
-.project-card:hover .p-link {
-  background: var(--lime);
-  color: var(--black);
-  transform: rotate(45deg);
+  transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
 }
 
 /* ════════════════════════════════════════
