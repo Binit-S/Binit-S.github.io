@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Kaushan+Script&family=JetBrains+Mono:wght@400;500;700&family=Ubuntu+Condensed&family=Ubuntu+Mono:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Kaushan+Script&family=JetBrains+Mono:wght@400;500;700&family=Ubuntu+Condensed&family=Ubuntu+Mono:wght@400;700&family=Special+Gothic+Condensed+One&display=swap"
     rel="stylesheet">
   <link href="https://fonts.cdnfonts.com/css/google-sans" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
@@ -21,181 +21,132 @@
   <div id="cursor-ring"></div>
   <div class="noise-overlay"></div>
 
+  <!-- Full Screen Menu Overlay -->
+  <div id="menu-overlay" class="menu-overlay">
+    <div class="menu-content">
+      <a href="#home" class="menu-link menu-toggle" data-text="HOME">HOME</a>
+      <a href="#projects" class="menu-link menu-toggle" data-text="PROJECTS">PROJECTS</a>
+      <a href="#contact" class="menu-link menu-toggle" data-text="CONTACT">CONTACT</a>
+    </div>
+  </div>
+
   <!-- ── SECTION 1: HERO ── -->
-  <section class="snap-section" id="home">
-    <div class="canvas">
+  <section class="snap-section hero-section" id="home">
 
-      <div class="left-col">
+    <!-- Topography background -->
+    <div class="hero-bg">
+      <img src="Mountain.webp" alt="Topography" />
+    </div>
 
-        <!-- Logo -->
-        <a href="#home" class="logo" id="logo">Binit S<span class="logo-dot">.</span></a>
+    <!-- Top Left Coord & Title -->
+    <div class="hero-top-left">
+      <span class="hero-coord"></span>
+      <span class="hero-title">BINIT S<span style="color:var(--lime);">.</span></span>
+    </div>
 
-        <!-- Hero -->
-        <div class="hero-block">
-          <div class="hero-left">
-            <div class="greeting-row">
-              <span class="hi-text">Hi<span class="hi-comma">,</span></span>
-            </div>
-            <div class="name-row">
-              <div class="name-box"><span class="name-binit">Binit</span></div>
-              <span class="name-here">Here</span>
-              <span class="star-icon">✦</span>
-            </div>
-          </div>
-          <div class="badges-col">
-            <div class="badge badge-purple"><span>Builder</span></div>
-            <div class="badge badge-pink"><span>Full-Stack Developer</span></div>
-            <div class="badge badge-teal"><span>Hackathon Participant</span></div>
-          </div>
+    <!-- Side Nav / Menu Button -->
+    <button class="side-nav-btn menu-toggle">
+      <img src="icon.svg" alt="Menu" />
+      <span>01</span>
+    </button>
+
+    <div class="hero-content">
+      <!-- Left text area -->
+      <div class="hero-left">
+        <h2 class="hero-greeting">HEY THERE ,</h2>
+        <h1 class="hero-name">I'M BINIT,</h1>
+
+        <div class="hero-tags">
+          <div class="hero-tag">./Full-Stack<br>Developer</div>
+          <div class="hero-tag">./Builder</div>
+          <div class="hero-tag">./Hackathon<br>Participant</div>
         </div>
 
-        <!-- Socials -->
-        <div class="socials">
-          <a href="https://github.com/Binit-S" class="social-icon" target="_blank" rel="noopener" title="GitHub">
-            <!-- PLACEHOLDER: replace with your GitHub SVG -->
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-            </svg>
-          </a>
-          <a href="https://linkedin.com/in/binit-saha" class="social-icon" target="_blank" rel="noopener"
-            title="LinkedIn">
-            <!-- PLACEHOLDER: replace with your LinkedIn SVG -->
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-            </svg>
-          </a>
-          <a href="mailto:Binitsaha91@gmail.com" class="social-icon" title="Email">
-            <!-- PLACEHOLDER: replace with your Gmail SVG -->
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="4" width="20" height="16" rx="2" />
-              <path d="m2 7 10 7 10-7" />
+        <div class="hero-divider"></div>
+
+        <div class="hero-bio">
+          <div class="bio-title">&gt; WHO_AM_I.EXE</div>
+          <p class="bio-p">CS final at KIIT University 23-27<br>passionate about building <span
+              class="text-lime">Fullstack</span><br>applications <span class="text-lime">powered by AI.</span></p>
+          <p class="bio-p">When I'm not coding, I'm designing in<br>Figma, editing videos,<br>or exploring the
+            intersection of <span class="text-lime">tech</span><br>and <span class="text-lime">creativity</span>.</p>
+        </div>
+
+        <div class="hero-view-wrap">
+          <a href="#projects" class="view-projects">
+            <span>&gt; VIEW_PROJECTS</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
             </svg>
           </a>
         </div>
+      </div>
 
-        <!-- About -->
-        <div class="about-section">
-          <p class="about-label">About Me</p>
-          <div class="about-line"></div>
-          <p class="about-text">
-            I'm a CS final at KIIT University 23-27<br>
-            passionate about building <span class="hl-green">Fullstack</span> applications <span
-              class="hl-green">powered by AI.</span><br><br>
-            When I'm not coding, I'm designing in Figma, editing videos,<br>
-            or exploring the intersection of <span class="bubble">tech</span> and <span
-              class="bubble">creativity</span>.
-          </p>
-        </div>
-
-        <!-- Bottom-left text -->
-        <div class="creative-footer">
-          <p>Trying to be <span class="text-pink">creative</span><br>everyday</p>
-        </div>
-
-      </div><!-- /left-col -->
-
-      <!-- Work / projects CTA -->
-      <a href="#projects" class="work-btn" id="workBtn">
-        <div class="work-btn-shape">
-          <span class="work-btn-label">Work/projects</span>
-        </div>
-        <div class="work-btn-arrow">
-          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="18" viewBox="0 0 15 18" fill="none">
-            <path d="M7.5 1L7.5 17M1 11L7.5 17L14 11" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round" />
-          </svg>
-        </div>
-      </a>
-
-      <!-- ── RIGHT COL ── -->
-      <div class="right-col">
-        <div class="dot-grid"></div>
-
-        <!-- Photo stack -->
-        <div class="photo-stack">
-          <div class="photo-shadow"></div>
-          <div class="photo-img">
-            <!-- Drop your headshot <img> here; placeholder below -->
-            <img src="pfp_port.webp" alt="Binit S." />
-          </div>
-        </div>
-
-        <p class="right-caption">Crafting clean, functional and<br>efficient digital solutions.</p>
-
-        <!-- Skills card -->
-        <div class="skills-card">
-          <div class="skills-header">
-            <span class="skills-title">What I Work With</span>
-            <div class="skills-icon-wrap">
-              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
-                <path
-                  d="M6.54 13.92L24 24.02L41.46 13.92M24 44.16V24M42 32V16C41.9993 15.2985 41.8141 14.6096 41.4631 14.0023C41.112 13.395 40.6075 12.8907 40 12.54L26 4.53999C25.3919 4.18891 24.7021 4.00409 24 4.00409C23.2979 4.00409 22.6081 4.18891 22 4.53999L8 12.54C7.39253 12.8907 6.88796 13.395 6.53692 14.0023C6.18589 14.6096 6.00072 15.2985 6 16V32C6.00072 32.7014 6.18589 33.3904 6.53692 33.9977C6.88796 34.605 7.39253 35.1093 8 35.46L22 43.46C22.6081 43.8111 23.2979 43.9959 24 43.9959C24.7021 43.9959 25.3919 43.8111 26 43.46L40 35.46C40.6075 35.1093 41.112 34.605 41.4631 33.9977C41.8141 33.3904 41.9993 32.7014 42 32Z"
-                  stroke="#1D1B20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
+      <!-- Right card area -->
+      <div class="hero-right">
+        <div class="dev-card">
+          <div class="dev-card-top">
+            <span class="dev-label">/ DEVELOPER.JPG</span>
+            <div class="dev-img-row">
+              <img src="pfp_port.webp" alt="Developer" class="dev-img" />
+              <h3 class="dev-headline">/BUILDING DIGITAL<br>SOLUTIONS THAT<br>MATTER</h3>
             </div>
           </div>
-          <div class="skills-grid">
-            <div class="skill-col">
-              <h4 class="skill-heading">Frontend</h4>
-              <div class="skill-underline"></div>
-              <ul class="skill-list">
-                <li>React.js</li>
-                <li>Next.js</li>
-                <li>Tailwind CSS</li>
-                <li>HTML5 / CSS3</li>
-              </ul>
+
+          <div class="dev-card-mid">
+            <div class="dev-mid-title">WHAT I WORK WITH</div>
+            <div class="skills-table">
+              <div class="skill-row">
+                <span class="skill-cat">/ FRONTEND</span>
+                <span class="skill-items">React.js ,Next.js , Tailwind</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-cat">/ BACKEND</span>
+                <span class="skill-items">Node.js ,Express.js ,MongoDB ,MySQL , JAVA</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-cat">/ AI &amp; CLOUD</span>
+                <span class="skill-items">Gemini API ,Google Cloud Run<br>,Firebase ,Docker</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-cat">/ TOOLS</span>
+                <span class="skill-items">Adobe Illustrator , Figma ,<br>DaVinci , Antigravity/Codex</span>
+              </div>
             </div>
-            <div class="skill-col">
-              <h4 class="skill-heading">Backend</h4>
-              <div class="skill-underline"></div>
-              <ul class="skill-list">
-                <li>Node.js</li>
-                <li>Express.js</li>
-                <li>MongoDB</li>
-                <li>MySQL</li>
-              </ul>
-            </div>
-            <div class="skill-col">
-              <h4 class="skill-heading">AI &amp; Cloud</h4>
-              <div class="skill-underline"></div>
-              <ul class="skill-list">
-                <li>Gemini API</li>
-                <li>Google Cloud Run</li>
-                <li>Firebase</li>
-                <li>Docker</li>
-              </ul>
-            </div>
+          </div>
+
+          <div class="dev-card-bottom">
+            <span class="dev-location">BASED IN <span class="text-lime">INDIA</span></span>
           </div>
         </div>
+      </div>
+    </div>
 
-        <!-- Get in touch -->
-        <a href="#contact" class="git-btn">
-          <span class="git-label">Get in touch</span>
-          <div class="git-circle">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-              <circle cx="16" cy="16" r="16" fill="black" />
-            </svg>
-            <svg class="git-arrow" width="17" height="17" viewBox="0 0 20 20" fill="none">
-              <path d="M1 9.75H18.5M9.75 18.5L18.5 9.75L9.75 1" stroke="white" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg>
-          </div>
-        </a>
-
-      </div><!-- /right-col -->
-
-    </div><!-- /canvas -->
+    <!-- Bottom Right text -->
+    <div class="hero-bottom-right">
+      Trying to be <span class="text-orange">creative</span> everyday
+    </div>
   </section>
 
   <!-- ── SECTION 2: PROJECTS ── -->
   <section class="snap-section projects-section" id="projects">
 
+    <!-- Side Nav / Menu Button -->
+    <button class="side-nav-btn menu-toggle">
+      <img src="icon.svg" alt="Menu" />
+      <span>02</span>
+    </button>
+
     <!-- ── HEADER ROW ── -->
     <div class="proj-header">
-      <h2 class="proj-header-title">PROJECTS</h2>
+      <div class="proj-title-wrap">
+        <h2 class="proj-header-title">//. PROJECT</h2>
+        <div class="proj-subtitle-wrap">
+          <span class="proj-subtitle"><br>Selected work/Project</span>
+          <span class="star-icon"><br>✦</span>
+        </div>
+      </div>
       <div class="proj-mountain-wrap">
         <img src="mountain.png" alt="Mountain wireframe" class="proj-mountain-img" />
       </div>
@@ -217,11 +168,14 @@
           <div class="proj-expanded proj-expanded--dark">
             <h3 class="proj-exp-name">SUPPLY CHAIN<br>NEXUS</h3>
             <span class="proj-exp-num">01</span>
-            <p class="proj-exp-desc">An AI-powered logistics dashboard that detects<br>global supply chain disruptions in real time.<br>Scores live geopolitical news (0-100) using Gemini<br>AI, cutting detection time from hours to under 2<br>minutes. Features a Human-in-the-Loop rerouting<br>system with sea/air/road alternatives and one-<br>click operator approval.</p>
+            <p class="proj-exp-desc">An AI-powered logistics dashboard that detects<br>global supply chain disruptions
+              in real time.<br>Scores live geopolitical news (0-100) using Gemini<br>AI, cutting detection time from
+              hours to under 2<br>minutes. Features a Human-in-the-Loop rerouting<br>system with sea/air/road
+              alternatives and one-<br>click operator approval.</p>
             <span class="proj-exp-view">VIEW PROJECT</span>
             <div class="proj-exp-line"></div>
             <svg class="proj-exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </div>
         </a>
@@ -240,11 +194,13 @@
           <div class="proj-expanded proj-expanded--dark">
             <h3 class="proj-exp-name">NUTRISYNC</h3>
             <span class="proj-exp-num">02</span>
-            <p class="proj-exp-desc">A full-stack health app with an AI dietitian<br>agent that creates personalized meal plans,<br>tracks symptoms, and generates grocery lists.<br>Streams AI responses in real time without<br>blocking the UI, with cross-platform sync to<br>user schedules.</p>
+            <p class="proj-exp-desc">A full-stack health app with an AI dietitian<br>agent that creates personalized
+              meal plans,<br>tracks symptoms, and generates grocery lists.<br>Streams AI responses in real time
+              without<br>blocking the UI, with cross-platform sync to<br>user schedules.</p>
             <span class="proj-exp-view">VIEW PROJECT</span>
             <div class="proj-exp-line"></div>
             <svg class="proj-exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </div>
         </a>
@@ -263,11 +219,13 @@
           <div class="proj-expanded proj-expanded--dark">
             <h3 class="proj-exp-name">MOCK.IO</h3>
             <span class="proj-exp-num">03</span>
-            <p class="proj-exp-desc">A peer-to-peer interview platform where two<br>users take turns as interviewer and<br>interviewee. AI reads both resumes and<br>generates tailored interview questions<br>automatically. Built with JWT auth and a full<br>resume parsing pipeline.</p>
+            <p class="proj-exp-desc">A peer-to-peer interview platform where two<br>users take turns as interviewer
+              and<br>interviewee. AI reads both resumes and<br>generates tailored interview questions<br>automatically.
+              Built with JWT auth and a full<br>resume parsing pipeline.</p>
             <span class="proj-exp-view">VIEW PROJECT</span>
             <div class="proj-exp-line"></div>
             <svg class="proj-exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </div>
         </a>
@@ -281,7 +239,8 @@
             <span class="proj-more-text">+MORE PROJECTS</span>
             <div class="proj-github-icon" title="GitHub">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                <path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
               </svg>
             </div>
             <p class="proj-quote-label">EXPANDING<br>TECH<br>HORIZONS</p>
@@ -292,7 +251,7 @@
             <span class="proj-exp-currently">CURRENTLY BUILDING</span>
             <span class="proj-exp-enter">ENTER LABS</span>
             <svg class="proj-exp-enter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M7 7L17 17M17 17H7M17 17V7" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 7L17 17M17 17H7M17 17V7" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </div>
         </a>
@@ -304,6 +263,13 @@
 
   <!-- ── SECTION 3: CONTACT ── -->
   <section class="snap-section contact-section" id="contact">
+
+    <!-- Side Nav / Menu Button -->
+    <button class="side-nav-btn menu-toggle">
+      <img src="icon.svg" alt="Menu" />
+      <span>03</span>
+    </button>
+
     <div class="section-inner contact-inner">
       <p class="eyebrow" style="color:var(--lime)">✦ Say Hello</p>
       <h2 class="sec-title">Get In<br>Touch</h2>

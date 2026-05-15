@@ -188,3 +188,34 @@ if (photoStack && photoImg) {
     photoImg.style.transform = 'rotate(-8deg)';
   });
 }
+
+/* ── 11. MENU TOGGLE ── */
+const menuToggleBtns = document.querySelectorAll('.menu-toggle');
+const menuOverlay = document.getElementById('menu-overlay');
+
+menuToggleBtns.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const isLink = btn.classList.contains('menu-link');
+    
+    // Toggle active class
+    if (menuOverlay.classList.contains('active')) {
+      menuOverlay.classList.remove('active');
+    } else {
+      menuOverlay.classList.add('active');
+    }
+
+    // If it's a link, scroll to target after delay
+    if (isLink) {
+      setTimeout(() => {
+        const targetId = btn.getAttribute('href');
+        if (targetId && targetId !== '#') {
+          const target = document.querySelector(targetId);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }, 300);
+    }
+  });
+});
