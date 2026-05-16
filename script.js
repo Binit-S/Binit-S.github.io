@@ -48,35 +48,52 @@ enlargeTargets.forEach(el => {
 
 /* ── 3. SMOOTH ANCHOR SCROLL & SNAP FIX ── */
 let isScrolling = false;
+let isTrackpad = false;
+let wheelTimer;
 
 window.addEventListener('wheel', (e) => {
-  const isTrackpad = Math.abs(e.deltaY) < 50; // trackpads send small deltas
-
-  if (!isTrackpad) {
-    e.preventDefault();
-
-    if (isScrolling) return;
-    isScrolling = true;
-
-    const direction = e.deltaY > 0 ? 1 : -1;
-    const sectionHeight = window.innerHeight;
-    const current = Math.round(window.scrollY / sectionHeight);
-    const next = Math.max(0, current + direction);
-
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
-    const targetScroll = Math.min(next * sectionHeight, maxScroll);
-
-    window.scrollTo({
-      top: targetScroll,
-      behavior: 'smooth'
-    });
-
-    setTimeout(() => {
-      isScrolling = false;
-    }, 800);
-  } else {
-    document.documentElement.style.scrollSnapType = 'y mandatory';
+  // A trackpad usually sends fractional deltas OR very small initial deltas
+  if (e.deltaY % 1 !== 0 || Math.abs(e.deltaY) < 50) {
+    isTrackpad = true;
   }
+  
+  // Reset trackpad detection after scrolling pauses
+  clearTimeout(wheelTimer);
+  wheelTimer = setTimeout(() => {
+    isTrackpad = false;
+  }, 400);
+
+  if (isTrackpad) {
+    // If it's a trackpad, let native CSS scroll-snap handle the momentum smoothly
+    document.documentElement.style.scrollSnapType = 'y mandatory';
+    return;
+  }
+
+  // --- Mouse Wheel Custom Snap Logic ---
+  e.preventDefault();
+
+  if (isScrolling) return;
+  isScrolling = true;
+
+  // Temporarily disable CSS snap so it doesn't fight our JS scroll
+  document.documentElement.style.scrollSnapType = 'none';
+
+  const direction = e.deltaY > 0 ? 1 : -1;
+  const sectionHeight = window.innerHeight;
+  const current = Math.round(window.scrollY / sectionHeight);
+  const next = Math.max(0, current + direction);
+
+  const maxScroll = document.body.scrollHeight - window.innerHeight;
+  const targetScroll = Math.min(next * sectionHeight, maxScroll);
+
+  window.scrollTo({
+    top: targetScroll,
+    behavior: 'smooth'
+  });
+
+  setTimeout(() => {
+    isScrolling = false;
+  }, 800);
 }, { passive: false });
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -228,7 +245,7 @@ const menuOverlay = document.getElementById('menu-overlay');
 menuToggleBtns.forEach(btn => {
   btn.addEventListener('click', (e) => {
     e.preventDefault();
-    const isLink = btn.classList.contains('menu-link');
+    const isLink = btn.classList.contains('menu-link') || btn.classList.contains('menu-item');
     
     // Toggle active class
     if (menuOverlay.classList.contains('active')) {
