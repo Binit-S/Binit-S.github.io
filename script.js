@@ -46,7 +46,39 @@ enlargeTargets.forEach(el => {
 });
 
 
-/* ── 3. SMOOTH ANCHOR SCROLL ── */
+/* ── 3. SMOOTH ANCHOR SCROLL & SNAP FIX ── */
+let isScrolling = false;
+
+window.addEventListener('wheel', (e) => {
+  const isTrackpad = Math.abs(e.deltaY) < 50; // trackpads send small deltas
+
+  if (!isTrackpad) {
+    e.preventDefault();
+
+    if (isScrolling) return;
+    isScrolling = true;
+
+    const direction = e.deltaY > 0 ? 1 : -1;
+    const sectionHeight = window.innerHeight;
+    const current = Math.round(window.scrollY / sectionHeight);
+    const next = Math.max(0, current + direction);
+
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const targetScroll = Math.min(next * sectionHeight, maxScroll);
+
+    window.scrollTo({
+      top: targetScroll,
+      behavior: 'smooth'
+    });
+
+    setTimeout(() => {
+      isScrolling = false;
+    }, 800);
+  } else {
+    document.documentElement.style.scrollSnapType = 'y mandatory';
+  }
+}, { passive: false });
+
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();

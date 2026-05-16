@@ -173,7 +173,7 @@ body.cursor-hover #cursor-ring {
 ════════════════════════════════════════ */
 .side-nav-btn {
   position: absolute;
-  left: 0;
+  right: 0;
   top: 12.6vh;
   /* Roughly 129px */
   background: transparent;
@@ -183,6 +183,7 @@ body.cursor-hover #cursor-ring {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-direction: row-reverse;
   padding: 10px 20px;
   z-index: 50;
   transition: transform 0.2s ease;
@@ -203,7 +204,7 @@ body.cursor-hover #cursor-ring {
 }
 
 .side-nav-btn:hover {
-  transform: translateX(5px);
+  transform: translateX(-5px);
 }
 
 /* ════════════════════════════════════════
@@ -1182,58 +1183,157 @@ body.cursor-hover #cursor-ring {
 ════════════════════════════════════════ */
 .contact-section {
   background: var(--black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
-.contact-inner {
+.contact-content {
+  display: flex;
+  width: 80vw;
+  max-width: 1400px;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-top: 5vh;
+}
+
+.contact-left {
+  width: 50%;
+}
+
+.contact-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 9vw;
+  line-height: 0.9;
+  font-weight: 400;
+  color: var(--white);
+  margin: 0;
+}
+
+.contact-right {
+  width: 40%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  height: 100%;
-  padding: 0;
 }
 
-.contact-email {
+.contact-intro {
   font-family: "Cascadia Code", monospace;
-  font-size: clamp(18px, 2.5vw, 26px);
-  color: var(--white);
-  text-decoration: none;
-  border-bottom: 2px solid var(--white);
-  padding-bottom: 4px;
-  margin-bottom: 32px;
-  display: inline-block;
-  transition: color 0.2s, border-color 0.2s;
+  font-size: 1vw;
+  line-height: 1.6;
+  color: #A0A0A0;
+  margin-top: 0;
+  margin-bottom: 2vw;
 }
 
-.contact-email:hover {
-  color: var(--lime);
-  border-color: var(--lime);
-}
-
-.contact-links {
+.contact-list {
   display: flex;
-  gap: 32px;
-  margin-bottom: 48px;
+  flex-direction: column;
+  width: 100%;
 }
 
-.contact-links a {
-  font-family: "Jersey 20", sans-serif;
-  font-size: 24px;
-  color: #666;
+.contact-item {
+  display: flex;
+  align-items: center;
+  padding: 1.5vw 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-decoration: none;
-  transition: color 0.2s, transform 0.2s;
-  display: inline-block;
+  cursor: none; /* custom cursor */
+  transition: opacity 0.3s ease;
 }
 
-.contact-links a:hover {
-  color: var(--lime);
-  transform: translateY(-2px);
+.contact-list .contact-item:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.contact-tag {
-  font-family: "Jersey 20", sans-serif;
-  font-size: 20px;
-  color: #555;
+.contact-item:hover {
+  opacity: 0.7;
+}
+
+.contact-label {
+  width: 30%;
+  font-family: "Cascadia Code", monospace;
+  font-size: 0.9vw;
+  color: #A0A0A0;
+  letter-spacing: 1px;
+}
+
+.contact-val {
+  width: 60%;
+  font-family: "Cascadia Code", monospace;
+  font-size: 0.9vw;
+  color: #A0A0A0;
+}
+
+.contact-arrow {
+  width: 1.2vw;
+  height: 1.2vw;
+  color: #FF4721; /* Orange arrow */
+  margin-left: auto;
+}
+
+.contact-download-wrap {
+  margin-top: 2vw;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.download-btn {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  padding: 1vw 1.5vw;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-family: "Cascadia Code", monospace;
+  font-size: 0.8vw;
+  color: #A0A0A0;
+  text-decoration: none;
+  cursor: none; /* custom cursor */
+  transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.download-btn:hover {
+  border-color: #FF4721;
+  color: var(--white);
+}
+
+.download-btn svg {
+  width: 1.2vw;
+  height: 1.2vw;
+  color: #FF4721; /* Orange arrow in icon */
+}
+
+/* mobile adjustments for contact section */
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+    width: 90vw;
+    gap: 10vh;
+  }
+  .contact-left, .contact-right {
+    width: 100%;
+  }
+  .contact-heading {
+    font-size: 18vw;
+  }
+  .contact-intro {
+    font-size: 3.5vw;
+    margin-bottom: 5vw;
+  }
+  .contact-label, .contact-val, .download-btn {
+    font-size: 3vw;
+  }
+  .contact-item {
+    padding: 4vw 0;
+  }
+  .contact-arrow, .download-btn svg {
+    width: 4vw;
+    height: 4vw;
+  }
+  .download-btn {
+    padding: 3vw 4vw;
+  }
 }
 
 /* ════════════════════════════════════════
