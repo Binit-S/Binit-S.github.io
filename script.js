@@ -51,7 +51,10 @@ let isScrolling = false;
 let isTrackpad = false;
 let wheelTimer;
 
+const hasSnapSections = document.querySelectorAll('.snap-section').length > 0;
+
 window.addEventListener('wheel', (e) => {
+  if (!hasSnapSections) return; // Allow normal scrolling on blog/archive subpages
   // A trackpad usually sends fractional deltas OR very small initial deltas
   if (e.deltaY % 1 !== 0 || Math.abs(e.deltaY) < 50) {
     isTrackpad = true;
@@ -248,20 +251,26 @@ menuToggleBtns.forEach(btn => {
     const isLink = btn.classList.contains('menu-link') || btn.classList.contains('menu-item');
     
     // Toggle active class
-    if (menuOverlay.classList.contains('active')) {
-      menuOverlay.classList.remove('active');
-    } else {
-      menuOverlay.classList.add('active');
+    if (menuOverlay) {
+      if (menuOverlay.classList.contains('active')) {
+        menuOverlay.classList.remove('active');
+      } else {
+        menuOverlay.classList.add('active');
+      }
     }
 
-    // If it's a link, scroll to target after delay
+    // If it's a link, scroll to target after delay or navigate
     if (isLink) {
+      const targetId = btn.getAttribute('href');
       setTimeout(() => {
-        const targetId = btn.getAttribute('href');
         if (targetId && targetId !== '#') {
-          const target = document.querySelector(targetId);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
+          if (targetId.startsWith('#')) {
+            const target = document.querySelector(targetId);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          } else {
+            window.location.href = targetId;
           }
         }
       }, 300);
