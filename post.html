@@ -136,6 +136,22 @@
   <script src="script.js"></script>
   <script>
     async function loadBlogPost() {
+      if (window.location.protocol === 'file:') {
+        document.getElementById('post-title').textContent = 'LOCAL PREVIEW LIMITATION';
+        document.getElementById('post-date').textContent = '';
+        document.getElementById('post-body').innerHTML = `
+          <div class="blog-error" style="color: #FF4721; font-family: 'Ubuntu Mono', monospace; line-height: 1.6; font-size: 1.1rem; padding: 20px 0;">
+            <strong>[Local Protocol Notice]</strong><br>
+            Your browser's security settings block loading local Markdown files dynamically via the <code>file://</code> protocol.<br><br>
+            To test your markdown files and edits locally:
+            <ol style="margin-left: 20px; margin-top: 10px; padding-left: 10px;">
+              <li>Run a local web server (e.g., VS Code's "Live Server" extension, Python's <code>python -m http.server</code>, or <code>npx http-server</code> inside this folder).</li>
+              <li>View this page via <code>http://localhost:your-port/post.html?id=my-first-post</code> in your browser.</li>
+            </ol>
+          </div>
+        `;
+        return;
+      }
       try {
         const postId = new URLSearchParams(window.location.search).get('id');
         if (!postId) throw new Error('No post ID specified in URL');

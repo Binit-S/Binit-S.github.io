@@ -131,6 +131,20 @@
   <script>
     // Fetch and load logs on initialization
     async function loadLogsIndex() {
+      if (window.location.protocol === 'file:') {
+        document.getElementById('logs-container').innerHTML = `
+          <div class="logs-error" style="color: #FF4721; font-family: 'Ubuntu Mono', monospace; line-height: 1.6; font-size: 1.1rem; margin-top: 20px;">
+            <strong>[Local Protocol Notice]</strong><br>
+            Your browser's security settings (CORS same-origin policy) block loading local JSON/Markdown files directly via <code>file://</code>.<br><br>
+            To preview and test your blog layout locally:
+            <ol style="margin-left: 20px; margin-top: 10px; padding-left: 10px;">
+              <li>Run a local web server in your terminal (e.g., Python's <code>python -m http.server</code>, or Node's <code>npx http-server</code>).</li>
+              <li>Access the site in your browser at <code>http://localhost:8000/archive.html</code> (or the port your server outputs).</li>
+            </ol>
+          </div>
+        `;
+        return;
+      }
       try {
         const response = await fetch('posts/index.json');
         if (!response.ok) throw new Error('Failed to fetch posts registry');
