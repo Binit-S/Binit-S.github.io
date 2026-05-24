@@ -1,3 +1,1 @@
-This happens as recently as Safari 16.4. It's because your favicon fails to meet contrast requirements.
-
-I don't know what the requirements are, or how Safari calculates them, and I can't find any official information online (beyond [some discussion](https://github.com) deciding that Safari should stop automatically adjusting colors for improved contrast in places like ::placeholder and ::selection). It's definitely related to color contrast, though I didn't see any consistent behavior by matching or exceeding AA/4.5:1 or AAA/7:1 requirements of the foreground color against both #000 and #282828 (Safari's default tabbar background in dark mode).
+Will be updating soon...
