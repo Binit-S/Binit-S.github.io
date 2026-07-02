@@ -2,390 +2,271 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Binit S.</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Binit S. — Fullstack Developer</title>
   <link rel="icon" type="image/x-icon" href="logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jersey+20&family=Kaushan+Script&family=JetBrains+Mono:wght@400;500;700&family=Ubuntu+Condensed&family=Ubuntu+Mono:wght@400;700&family=Special+Gothic+Condensed+One&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600&display=swap"
     rel="stylesheet">
-  <link href="https://fonts.cdnfonts.com/css/google-sans" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css">
+  <!-- GSAP Core for Cinematic and Smooth Animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
 
 <body>
 
-  <div id="cursor"></div>
-  <div id="cursor-ring"></div>
-  <div class="noise-overlay"></div>
-
-  <!-- Full Screen Menu Overlay -->
-  <div id="menu-overlay" class="menu-overlay">
-    <div class="menu-branding">BINIT S.</div>
-    <button class="menu-close menu-toggle">
-      CLOSE 
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-    </button>
-    
-    <div class="menu-divider-vertical"></div>
-
-    <div class="menu-left">
-      <div class="menu-topo-bg"></div>
-      <div class="menu-left-content">
-        <div class="menu-label-small">
-          <div class="menu-label-lines">
-            <div class="line"></div>
-            <div class="line"></div>
-          </div>
-          <span>MENU<br><span class="text-orange">00</span></span>
-        </div>
-
-        <h1 class="menu-huge-title">MENU<span class="text-orange">*</span></h1>
-        
-        <div class="menu-socials">
-          <a href="https://github.com/Binit-S" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" /></svg>
-            GITHUB
-            <span class="tiny-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span>
-          </a>
-          <a href="https://www.linkedin.com/in/binit-saha-5557401a1/" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            LINKEDIN
-            <span class="tiny-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span>
-          </a>
-          <a href="mailto:Binitsaha91@gmail.com">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            EMAIL
-            <span class="tiny-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></span>
-          </a>
-        </div>
-        
-
-      </div>
-    </div>
-
-    <div class="menu-right">
-      <div class="menu-links-container">
-        <a href="#home" class="menu-item menu-toggle">
-          <span class="menu-item-num">01</span>
-          <span class="menu-item-text">HOME</span>
-          <span class="menu-item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
-        </a>
-        <a href="#projects" class="menu-item menu-toggle">
-          <span class="menu-item-num">02</span>
-          <span class="menu-item-text">PROJECTS</span>
-          <span class="menu-item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
-        </a>
-        <a href="archive.html" class="menu-item menu-toggle">
-          <span class="menu-item-num">03</span>
-          <span class="menu-item-text">ARCHIVE</span>
-          <span class="menu-item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
-        </a>
-        <a href="#contact" class="menu-item menu-toggle">
-          <span class="menu-item-num">04</span>
-          <span class="menu-item-text">CONTACT</span>
-          <span class="menu-item-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
-        </a>
-      </div>
-    </div>
+  <!-- Cinematic Entry Intro Overlay -->
+  <div id="intro-overlay" class="intro-overlay">
+    <div class="intro-text" id="intro-text-1">BUILD.</div>
+    <div class="intro-text" id="intro-text-2">SYSTEMS.</div>
+    <div class="intro-text" id="intro-text-3">THAT <span class="accent-text">SHIP.</span></div>
   </div>
 
-  <!-- ── SECTION 1: HERO ── -->
-  <section class="snap-section hero-section" id="home">
+  <!-- Minimal Brutalist Background Details -->
+  <div class="grid-bg">
+    <div class="grid-line vertical" style="left: 20%;"></div>
+    <div class="grid-line vertical" style="left: 50%;"></div>
+    <div class="grid-line vertical" style="left: 80%;"></div>
+    <div class="grid-line horizontal" style="top: 35%;"></div>
+    <div class="grid-line horizontal" style="top: 70%;"></div>
+    <div class="crosshair" style="top: 35%; left: 20%;">+</div>
+    <div class="crosshair" style="top: 35%; left: 80%;">+</div>
+    <div class="crosshair" style="top: 70%; left: 50%;">+</div>
+  </div>
 
-    <!-- Topography background -->
-    <div class="hero-bg">
-      <img src="Mountain.webp" alt="Topography" />
+  <div class="noise-overlay"></div>
+
+  <!-- Minimal Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-brand">BINIT.S_</a>
+      <div class="nav-links">
+        <a href="#projects">WORK</a>
+        <a href="#proof">STACK</a>
+        <a href="archive.html">ARCHIVE</a>
+        <a href="#contact">CONTACT</a>
+      </div>
     </div>
+  </nav>
 
-    <!-- Top Left Coord & Title -->
-    <div class="hero-top-left">
-      <span class="hero-coord"></span>
-      <span class="hero-title">BINIT S<span style="color:var(--lime);">.</span></span>
-    </div>
+  <!-- Main Content Wrapper (revealed after intro) -->
+  <div id="main-content">
 
-    <!-- Side Nav / Menu Button -->
-    <button class="side-nav-btn menu-toggle">
-      <img src="icon.svg" alt="Menu" />
-      <span>01</span>
-    </button>
+    <!-- ============ HERO ============ -->
+    <section id="hero">
+      <div class="hero-container">
+        <h1 class="hero-title-large">
+          <span class="line-wrap"><span class="word">I BUILD</span></span><br>
+          <span class="line-wrap"><span class="word">SYSTEMS</span></span><br>
+          <span class="line-wrap"><span class="word">THAT <span class="accent">SHIP.</span></span></span>
+        </h1>
 
-    <div class="hero-content">
-      <!-- Left text area -->
-      <div class="hero-left">
-        <h2 class="hero-greeting">HEY THERE ,</h2>
-        <h1 class="hero-name">I'M BINIT,</h1>
-
-        <div class="hero-tags">
-          <div class="hero-tag">./Full-Stack<br>Developer</div>
-          <div class="hero-tag">./Builder</div>
-          <div class="hero-tag">./Hackathon<br>Participant</div>
-        </div>
-
-        <div class="hero-divider"></div>
-
-        <div class="hero-bio">
-          <div class="bio-title">&gt; WHO_AM_I.EXE</div>
-          <p class="bio-p">CS final at KIIT University 23-27 passionate about building <span
-              class="text-lime">Fullstack</span> applications <span class="text-lime">powered by AI.</span></p>
-          <p class="bio-p">When I'm not coding, I'm designing in Figma, editing videos, or exploring the
-            intersection of <span class="text-lime">tech</span> and <span class="text-lime">creativity</span>.</p>
-        </div>
-
-        <div class="hero-view-wrap">
-          <a href="#projects" class="view-projects">
-            <span>&gt; VIEW_PROJECTS</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
-          <a href="archive.html" class="view-projects">
-            <span>&gt; VISIT_ARCHIVE</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M7 17L17 7M17 7H7M17 7V17" />
-            </svg>
-          </a>
+        <div class="hero-details">
+          <h2 class="hero-subtitle">Fullstack Engineer</h2>
+          <p class="hero-desc">Building scalable products from idea to production.</p>
+          <div class="hero-ctas">
+            <a href="#projects" class="btn-outline">View Work</a>
+            <a href="Binit_Saha_Resume.pdf" target="_blank" class="btn-outline">Resume</a>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Right card area -->
-      <div class="hero-right">
-        <div class="dev-card">
-          <div class="dev-card-top">
-            <span class="dev-label">/ DEVELOPER.JPG</span>
-            <div class="dev-img-row">
-              <img src="pfp_port.webp" alt="Developer" class="dev-img" />
-              <h3 class="dev-headline">/BUILDING DIGITAL<br>SOLUTIONS THAT<br>MATTER</h3>
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects">
+      <div class="projects-head">
+        <div class="eyebrow">SELECTED BUILDS</div>
+        <h2 class="title">PROOF.EXE</h2>
+      </div>
+
+      <!-- CASE 01 -->
+      <div class="case">
+        <div class="case-left">
+          <div class="case-idx">01 / 03</div>
+          <h3 class="case-title">Supply Chain<br>Nexus</h3>
+          <p class="case-pos">AI-powered logistics dashboard that turns hours of manual risk-scanning into a 2-minute
+            automated read.</p>
+          <div class="stack-tags">
+            <span>React</span><span>Next.js</span><span>Gemini API</span><span>Firebase</span><span>Google Cloud
+              Run</span>
+          </div>
+          <div class="case-links">
+            <a href="https://github.com/Binit-S/supply-chain-nexus" target="_blank" rel="noopener">VIEW_REPO ↗</a>
+            <a href="#contact">ASK_ME_ABOUT_IT →</a>
+          </div>
+        </div>
+        <div class="case-right">
+          <div class="pbi">
+            <div class="row">
+              <div class="lab">PROBLEM</div>
+              <div class="txt">Supply chains get blindsided — disruptions surface in news cycles long after they've
+                already cost a shipment.</div>
+            </div>
+            <div class="row">
+              <div class="lab">BUILD</div>
+              <div class="txt">A dashboard that scores geopolitical news 0–100 with Gemini AI, routing operators to
+                alternative transport options with one-click approval.</div>
+            </div>
+            <div class="row impact">
+              <div class="lab">IMPACT</div>
+              <div class="txt">Detection time cut from hours to under 2 minutes.</div>
             </div>
           </div>
+        </div>
+      </div>
 
-          <div class="dev-card-mid">
-            <div class="dev-mid-title">WHAT I WORK WITH</div>
-            <div class="skills-table">
-              <div class="skill-row">
-                <span class="skill-cat">/ FRONTEND</span>
-                <span class="skill-items">React.js ,Next.js , Tailwind</span>
-              </div>
-              <div class="skill-row">
-                <span class="skill-cat">/ BACKEND</span>
-                <span class="skill-items">Node.js ,Express.js ,MongoDB ,MySQL , JAVA</span>
-              </div>
-              <div class="skill-row">
-                <span class="skill-cat">/ AI &amp; CLOUD</span>
-                <span class="skill-items">Gemini API ,Google Cloud Run<br>,Firebase ,Docker</span>
-              </div>
-              <div class="skill-row">
-                <span class="skill-cat">/ TOOLS</span>
-                <span class="skill-items">Adobe Illustrator , Figma ,<br>DaVinci , Antigravity/Codex</span>
-              </div>
+      <!-- CASE 02 -->
+      <div class="case">
+        <div class="case-left">
+          <div class="case-idx">02 / 03</div>
+          <h3 class="case-title">NutriSync</h3>
+          <p class="case-pos">Smart health coach delivering real-time dietary adaptation and symptom tracking for people
+            with variable routines.</p>
+          <div class="stack-tags">
+            <span>Next.js</span><span>Python</span><span>Firebase</span><span>Gemini API</span><span>Docker</span>
+          </div>
+          <div class="case-links">
+            <a href="https://github.com/Binit-S/nutrisync" target="_blank" rel="noopener">VIEW_REPO ↗</a>
+            <a href="#contact">ASK_ME_ABOUT_IT →</a>
+          </div>
+        </div>
+        <div class="case-right">
+          <div class="pbi">
+            <div class="row">
+              <div class="lab">PROBLEM</div>
+              <div class="txt">People struggle with rigid diets that don't adapt to daily schedule shifts, sudden
+                symptom spikes, or real-time pantry inventory changes.</div>
+            </div>
+            <div class="row">
+              <div class="lab">BUILD</div>
+              <div class="txt">A custom fullstack app using Gemini API as a real-time streaming dietitian agent to draft
+                personalized meal structures and coordinate automatically with schedules.</div>
+            </div>
+            <div class="row impact">
+              <div class="lab">IMPACT</div>
+              <div class="txt">100% real-time streaming diet adjustments with calendar syncing.</div>
             </div>
           </div>
-
-          <div class="dev-card-bottom">
-            <span class="dev-location">BASED IN <span class="text-lime">INDIA</span></span>
-          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Bottom Right text -->
-    <div class="hero-bottom-right">
-      Trying to be <span class="text-orange">creative</span> everyday
-    </div>
-  </section>
-
-  <!-- ── SECTION 2: PROJECTS ── -->
-  <section class="snap-section projects-section" id="projects">
-
-    <!-- Side Nav / Menu Button -->
-    <button class="side-nav-btn menu-toggle">
-      <img src="icon.svg" alt="Menu" />
-      <span>02</span>
-    </button>
-
-    <!-- ── HEADER ROW ── -->
-    <div class="proj-header">
-      <div class="proj-title-wrap">
-        <h2 class="proj-header-title">//. PROJECTS</h2>
-        <div class="proj-subtitle-wrap">
-          <span class="proj-subtitle"><br>Selected works/Projects</span>
-          <span class="star-icon"><br>✦</span>
+      <!-- CASE 03 -->
+      <div class="case">
+        <div class="case-left">
+          <div class="case-idx">03 / 03</div>
+          <h3 class="case-title">Mock.io</h3>
+          <p class="case-pos">P2P interview preparation platform leveraging AI to parse resumes and tailor question
+            pipelines in seconds.</p>
+          <div class="stack-tags">
+            <span>Node.js</span><span>Express.js</span><span>MongoDB</span>
+          </div>
+          <div class="case-links">
+            <a href="https://github.com/Binit-S?tab=repositories" target="_blank" rel="noopener">VIEW_REPO ↗</a>
+            <a href="#contact">ASK_ME_ABOUT_IT →</a>
+          </div>
         </div>
-      </div>
-      <div class="proj-mountain-wrap">
-        <img src="mountain.png" alt="Mountain wireframe" class="proj-mountain-img" />
-      </div>
-    </div>
-
-    <!-- ── PROJECTS BENTO GRID ── -->
-    <div class="proj-bento">
-
-      <!-- PROJECT 1 — Supply Chain Nexus -->
-      <div class="proj-block proj-block-1" data-project="1">
-        <a href="https://github.com/Binit-S/supply-chain-nexus" class="proj-block-inner" target="_blank" rel="noopener">
-          <!-- Default state -->
-          <div class="proj-default">
-            <p class="proj-stack">REACT - NEXT.JS - GEMINI API - FIREBASE - GOOGLE CLOUD RUN</p>
-            <span class="proj-block-num">01</span>
-            <h3 class="proj-block-name">SUPPLY CHAIN<br>NEXUS</h3>
-          </div>
-          <!-- Hover state -->
-          <div class="proj-expanded proj-expanded--dark">
-            <h3 class="proj-exp-name">SUPPLY CHAIN<br>NEXUS</h3>
-            <span class="proj-exp-num">01</span>
-            <p class="proj-exp-desc">An AI-powered logistics dashboard that detects<br>global supply chain disruptions
-              in real time.<br>Scores live geopolitical news (0-100) using Gemini<br>AI, cutting detection time from
-              hours to under 2<br>minutes. Features a Human-in-the-Loop rerouting<br>system with sea/air/road
-              alternatives and one-<br>click operator approval.</p>
-            <span class="proj-exp-view">VIEW PROJECT</span>
-            <div class="proj-exp-line"></div>
-            <svg class="proj-exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-        </a>
-      </div>
-
-      <!-- PROJECT 2 — NutriSync -->
-      <div class="proj-block proj-block-2" data-project="2">
-        <a href="https://github.com/Binit-S/nutrisync" class="proj-block-inner" target="_blank" rel="noopener">
-          <!-- Default state -->
-          <div class="proj-default">
-            <p class="proj-stack">NEXT.JS - PYTHON - FIREBASE - GEMINI API - DOCKER</p>
-            <span class="proj-block-num">02</span>
-            <h3 class="proj-block-name">NUTRISYNC</h3>
-          </div>
-          <!-- Hover state -->
-          <div class="proj-expanded proj-expanded--dark">
-            <h3 class="proj-exp-name">NUTRISYNC</h3>
-            <span class="proj-exp-num">02</span>
-            <p class="proj-exp-desc">A full-stack health app with an AI dietitian<br>agent that creates personalized
-              meal plans,<br>tracks symptoms, and generates grocery lists.<br>Streams AI responses in real time
-              without<br>blocking the UI, with cross-platform sync to<br>user schedules.</p>
-            <span class="proj-exp-view">VIEW PROJECT</span>
-            <div class="proj-exp-line"></div>
-            <svg class="proj-exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-        </a>
-      </div>
-
-      <!-- PROJECT 3 — Mock.io -->
-      <div class="proj-block proj-block-3" data-project="3">
-        <a href="https://github.com/Binit-S?tab=repositories" class="proj-block-inner" target="_blank" rel="noopener">
-          <!-- Default state -->
-          <div class="proj-default">
-            <p class="proj-stack">NODE.JS - EXPRESS.JS - MONGODB</p>
-            <span class="proj-block-num">03</span>
-            <h3 class="proj-block-name">MOCK.IO</h3>
-          </div>
-          <!-- Hover state -->
-          <div class="proj-expanded proj-expanded--dark">
-            <h3 class="proj-exp-name">MOCK.IO</h3>
-            <span class="proj-exp-num">03</span>
-            <p class="proj-exp-desc">A peer-to-peer interview platform where two<br>users take turns as interviewer
-              and<br>interviewee. AI reads both resumes and<br>generates tailored interview questions<br>automatically.
-              Built with JWT auth and a full<br>resume parsing pipeline.</p>
-            <span class="proj-exp-view">VIEW PROJECT</span>
-            <div class="proj-exp-line"></div>
-            <svg class="proj-exp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M7 17L17 7M17 7H7M17 7V17" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-        </a>
-      </div>
-
-      <!-- PROJECT 4 — +More Projects -->
-      <div class="proj-block proj-block-4" data-project="4">
-        <a href="https://github.com/Binit-S" class="proj-block-inner" target="_blank" rel="noopener">
-          <!-- Default state -->
-          <div class="proj-default">
-            <span class="proj-more-text">+MORE PROJECTS</span>
-            <div class="proj-github-icon" title="GitHub">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-              </svg>
+        <div class="case-right">
+          <div class="pbi">
+            <div class="row">
+              <div class="lab">PROBLEM</div>
+              <div class="txt">Traditional interview practice is generic and fails to test applicants against their
+                specific candidate resume details and target job descriptions.</div>
             </div>
-            <p class="proj-quote-label">EXPANDING<br>TECH<br>HORIZONS</p>
-            <p class="proj-quote-text">THE IDEA IS TO<br>KEEP BUILDING MORE</p>
+            <div class="row">
+              <div class="lab">BUILD</div>
+              <div class="txt">A Node.js &amp; MongoDB peer platform with dynamic resume parsing that auto-generates
+                custom candidate-specific question sets for interview swaps.</div>
+            </div>
+            <div class="row impact">
+              <div class="lab">IMPACT</div>
+              <div class="txt">Spins up custom-tailored candidate workspaces in under 30 seconds.</div>
+            </div>
           </div>
-          <!-- Hover state -->
-          <div class="proj-expanded proj-expanded--orange">
-            <span class="proj-exp-currently">CURRENTLY BUILDING</span>
-            <span class="proj-exp-enter">ENTER LABS</span>
-            <svg class="proj-exp-enter-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M7 7L17 17M17 17H7M17 17V7" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </div>
-        </a>
-      </div>
-
-    </div><!-- /proj-bento -->
-
-  </section>
-
-  <!-- ── SECTION 3: CONTACT ── -->
-  <section class="snap-section contact-section" id="contact">
-
-    <!-- Side Nav / Menu Button -->
-    <button class="side-nav-btn menu-toggle">
-      <img src="icon.svg" alt="Menu" />
-      <span>04</span>
-    </button>
-
-    <div class="contact-content">
-      <div class="contact-left">
-        <h2 class="contact-heading">LET'S<br>GET IN<br>TOUCH</h2>
-      </div>
-      <div class="contact-right">
-        <p class="contact-intro">Have a project in mind, a question,<br>or just want to connect?<br>I'd love to hear
-          from you.</p>
-
-        <div class="contact-list">
-          <a href="mailto:Binitsaha91@gmail.com" class="contact-item">
-            <span class="contact-label">EMAIL</span>
-            <span class="contact-val">Binitsaha91@gmail.com</span>
-            <svg class="contact-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </a>
-          <a href="https://www.linkedin.com/in/binit-saha-5557401a1/" target="_blank" rel="noopener"
-            class="contact-item">
-            <span class="contact-label">LINKEDIN</span>
-            <span class="contact-val">linkedin.com/in/binit-saha-5557401a1/</span>
-            <svg class="contact-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </a>
-          <a href="https://github.com/Binit-S" target="_blank" rel="noopener" class="contact-item">
-            <span class="contact-label">GITHUB</span>
-            <span class="contact-val">github.com/Binit-S</span>
-            <svg class="contact-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </a>
-        </div>
-
-        <div class="contact-download-wrap">
-          <a href="Binit_Saha_Resume.pdf" target="_blank" class="download-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-            DOWNLOAD RESUME
-          </a>
         </div>
       </div>
-    </div>
-  </section>
+
+      <div class="more-row">
+        <div class="l">Expanding tech horizons with new AI-fullstack projects in progress.</div>
+        <a href="archive.html" class="btn-outline">ENTER_LABS ↗</a>
+      </div>
+    </section>
+
+    <!-- ============ PROOF / SKILLS ============ -->
+    <section id="proof">
+      <div class="eyebrow">TECH STACK</div>
+      <h2 class="title">CAPABILITIES</h2>
+
+      <div class="proof-grid">
+        <div class="pcell">
+          <div class="ptitle">/ FRONTEND</div>
+          <div class="stack-line">React · Next.js · Tailwind CSS</div>
+          <div class="used-in">Used in <b>Supply Chain Nexus</b>, <b>NutriSync</b></div>
+        </div>
+        <div class="pcell">
+          <div class="ptitle">/ BACKEND</div>
+          <div class="stack-line">Node.js · Express.js · MongoDB · MySQL · Java</div>
+          <div class="used-in">Used in <b>Mock.io</b>, Nexus API + auth layer</div>
+        </div>
+        <div class="pcell">
+          <div class="ptitle">/ AI &amp; CLOUD</div>
+          <div class="stack-line">Gemini API · Google Cloud Run · Firebase · Docker</div>
+          <div class="used-in">Live in production on <b>2 of 3</b> shipped projects</div>
+        </div>
+        <div class="pcell">
+          <div class="ptitle">/ TOOLS</div>
+          <div class="stack-line">Figma · Illustrator · DaVinci · Antigravity/Codex</div>
+          <div class="used-in">Every project starts here, <b>before</b> a line of code</div>
+        </div>
+      </div>
+
+      <div class="tag-strip">
+        <span class="pill lead">./Full-Stack Developer</span>
+        <span class="pill">./Hackathon Finalist</span>
+        <span class="pill">./Design-Minded Engineer</span>
+        <span class="pill">./Ships to Production</span>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact">
+      <div class="eyebrow">CONNECT</div>
+      <div class="contact-grid">
+        <div>
+          <div class="contact-h">LET'S<br>BUILD<br><span class="hl">SOMETHING.</span></div>
+        </div>
+        <div>
+          <p class="contact-lead"></p>
+
+          <div class="clinks">
+            <a class="clink" href="mailto:Binitsaha91@gmail.com">
+              <span class="k">EMAIL</span><span class="v">Binitsaha91@gmail.com</span><span class="arrow">→</span>
+            </a>
+            <a class="clink" href="https://linkedin.com/in/binit-saha-5557401a1/" target="_blank" rel="noopener">
+              <span class="k">LINKEDIN</span><span class="v">/in/binit-saha-5557401a1</span><span class="arrow">→</span>
+            </a>
+            <a class="clink" href="https://github.com/Binit-S" target="_blank" rel="noopener">
+              <span class="k">GITHUB</span><span class="v">github.com/Binit-S</span><span class="arrow">→</span>
+            </a>
+          </div>
+
+          <div class="contact-btn-wrap">
+            <a href="Binit_Saha_Resume.pdf" target="_blank" class="btn-outline">↓ DOWNLOAD_RESUME</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-line">
+        <span>BASED IN INDIA</span>
+        <span>TRYING TO BE <span class="footer-highlight">CREATIVE</span> EVERYDAY</span>
+      </div>
+    </section>
+  </div>
+
+  <!-- Full Screen Menu Overlay (Retained for backwards compatibility/archives layout) -->
+  <div id="menu-overlay" class="menu-overlay" style="display: none;"></div>
 
   <script src="script.js"></script>
 </body>
