@@ -21,11 +21,12 @@
   --off-white: #FEFFFA;
 
   /* Redesign Core Design Tokens */
-  --void: #0B0B0B;             /* Page Background */
+  --void: #000000;             /* Page Background (Pure Black) */
+  --card-bg: #0A0A0C;          /* Segment Card Background */
   --ink: #F5F5F5;              /* Primary text */
   --mute: #7A7A7A;             /* Muted text */
   --signal: #FC4A25;           /* Accent Color (Linear Red-Orange) */
-  --line: rgba(255, 255, 255, 0.08); /* Borders */
+  --line: rgba(255, 255, 255, 0.06); /* Borders */
   
   /* Fonts */
   --font-display: 'Anton', sans-serif;
@@ -596,8 +597,7 @@ a {
    PROJECTS SECTION (Editorial Cases)
    ════════════════════════════════════════ */
 #projects {
-  padding: 140px 8vw 100px;
-  border-top: 1px solid var(--line);
+  /* Styled as a .segment-card */
 }
 
 .projects-head {
@@ -762,8 +762,7 @@ a {
    CAPABILITIES / STACK SECTION
    ════════════════════════════════════════ */
 #proof {
-  padding: 140px 8vw 100px;
-  border-top: 1px solid var(--line);
+  /* Styled as a .segment-card */
 }
 
 #proof .proof-grid {
@@ -838,9 +837,7 @@ a {
    CONTACT OVERHAUL
    ════════════════════════════════════════ */
 #contact {
-  padding: 140px 8vw 100px;
-  border-top: 1px solid var(--line);
-  background: radial-gradient(circle at 90% 85%, rgba(252, 74, 37, 0.015) 0%, transparent 50%);
+  background: radial-gradient(circle at 90% 85%, rgba(252, 74, 37, 0.015) 0%, transparent 50%), var(--card-bg) !important;
 }
 
 .contact-grid {
@@ -937,6 +934,21 @@ a {
 }
 
 /* ════════════════════════════════════════
+   SEGMENT CARD SYSTEM
+   ════════════════════════════════════════ */
+.segment-card {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 32px !important;
+  margin: 0 4vw 48px !important;
+  padding: 100px 6vw !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+
+/* ════════════════════════════════════════
    RESPONSIVE DESIGN SYSTEM
    ════════════════════════════════════════ */
 @media (max-width: 900px) {
@@ -981,6 +993,11 @@ a {
   }
   .navbar.scrolled {
     padding: 16px 6vw;
+  }
+  .segment-card {
+    margin: 0 3vw 32px !important;
+    padding: 60px 5vw !important;
+    border-radius: 20px !important;
   }
 }
 
