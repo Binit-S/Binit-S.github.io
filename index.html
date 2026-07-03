@@ -12,8 +12,10 @@
     href="https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <!-- GSAP Core for Cinematic and Smooth Animations -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- GSAP Core, ScrollTrigger, and ScrollSmoother for Cinematic, Smooth, and Scroll Animations -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollSmoother.min.js"></script>
 </head>
 
 <body>
@@ -44,6 +46,7 @@
     <div class="nav-container">
       <a href="#hero" class="nav-brand">BINIT.S_</a>
       <div class="nav-links">
+        <a href="#about">ABOUT</a>
         <a href="#projects">WORK</a>
         <a href="#proof">STACK</a>
         <a href="archive.html">ARCHIVE</a>
@@ -52,253 +55,283 @@
     </div>
   </nav>
 
-  <!-- Main Content Wrapper (revealed after intro) -->
-  <div id="main-content">
+  <div id="smooth-wrapper">
+    <div id="smooth-content">
+      <!-- Main Content Wrapper (revealed after intro) -->
+      <div id="main-content">
 
-    <!-- ============ HERO ============ -->
-    <section id="hero">
-      <div class="hero-container">
-        <h1 class="hero-title-large">
-          <span class="line-wrap"><span class="word">I BUILD</span></span><br>
-          <span class="line-wrap"><span class="word">SYSTEMS</span></span><br>
-          <span class="line-wrap"><span class="word">THAT <span class="accent">SHIP.</span></span></span>
-        </h1>
+        <!-- ============ HERO ============ -->
+        <section id="hero">
+          <div class="hero-container">
+            <h1 class="hero-title-large">
+              <span class="line-wrap"><span class="word">I BUILD</span></span><br>
+              <span class="line-wrap"><span class="word">SYSTEMS</span></span><br>
+              <span class="line-wrap"><span class="word">THAT <span class="accent">SHIP.</span></span></span>
+            </h1>
 
-        <div class="hero-details">
-          <h2 class="hero-subtitle">Fullstack Engineer</h2>
-          <p class="hero-desc">Building scalable products from idea to production.</p>
-          <div class="hero-ctas">
-            <a href="#projects" class="btn-outline">View Work</a>
-            <a href="Binit_Saha_Resume.pdf" target="_blank" class="btn-outline">Resume</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ PROJECTS ============ -->
-    <section id="projects" class="segment-card">
-      <div class="projects-head">
-        <div class="eyebrow">SELECTED BUILDS</div>
-        <h2 class="title">PROOF.EXE</h2>
-      </div>
-
-      <!-- CASE 01 -->
-      <div class="case">
-        <div class="case-left">
-          <div class="case-idx">01 / 03</div>
-          <h3 class="case-title">Supply Chain<br>Nexus</h3>
-          <p class="case-pos">AI-powered logistics dashboard that turns hours of manual risk-scanning into a 2-minute
-            automated read.</p>
-          <div class="stack-tags">
-            <span>React</span><span>Next.js</span><span>Gemini API</span><span>Firebase</span><span>Google Cloud
-              Run</span>
-          </div>
-          <div class="case-links">
-            <a href="https://github.com/Binit-S/supply-chain-nexus" target="_blank" rel="noopener">VIEW_REPO ↗</a>
-            <a href="#contact">ASK_ME_ABOUT_IT →</a>
-          </div>
-        </div>
-        <div class="case-right">
-          <div class="pbi">
-            <div class="row">
-              <div class="lab">PROBLEM</div>
-              <div class="txt">Supply chains get blindsided — disruptions surface in news cycles long after they've
-                already cost a shipment.</div>
-            </div>
-            <div class="row">
-              <div class="lab">BUILD</div>
-              <div class="txt">A dashboard that scores geopolitical news 0–100 with Gemini AI, routing operators to
-                alternative transport options with one-click approval.</div>
-            </div>
-            <div class="row impact">
-              <div class="lab">IMPACT</div>
-              <div class="txt">Detection time cut from hours to under 2 minutes.</div>
+            <div class="hero-details" data-lag="0.12">
+              <h2 class="hero-subtitle">Fullstack Engineer</h2>
+              <p class="hero-desc">Building scalable products from idea to production.</p>
+              <div class="hero-ctas">
+                <a href="#projects" class="btn-outline">View Work</a>
+                <a href="Binit_Saha_Resume.pdf" target="_blank" class="btn-outline">Resume</a>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </section>
 
-      <!-- CASE 02 -->
-      <div class="case">
-        <div class="case-left">
-          <div class="case-idx">02 / 03</div>
-          <h3 class="case-title">NutriSync</h3>
-          <p class="case-pos">Smart health coach delivering real-time dietary adaptation and symptom tracking for people
-            with variable routines.</p>
-          <div class="stack-tags">
-            <span>Next.js</span><span>Python</span><span>Firebase</span><span>Gemini API</span><span>Docker</span>
-          </div>
-          <div class="case-links">
-            <a href="https://github.com/Binit-S/nutrisync" target="_blank" rel="noopener">VIEW_REPO ↗</a>
-            <a href="#contact">ASK_ME_ABOUT_IT →</a>
-          </div>
-        </div>
-        <div class="case-right">
-          <div class="pbi">
-            <div class="row">
-              <div class="lab">PROBLEM</div>
-              <div class="txt">People struggle with rigid diets that don't adapt to daily schedule shifts, sudden
-                symptom spikes, or real-time pantry inventory changes.</div>
+        <!-- ============ ABOUT ME ============ -->
+        <section id="about" class="segment-card">
+          <div class="about-container">
+            <div class="about-left" data-speed="clamp(0.98)">
+              <div class="about-eyebrow eyebrow text-orange">ABOUT ME</div>
+              <h2 class="about-title">BINIT SAHA</h2>
+              <div class="about-location eyebrow text-orange">BASED IN INDIA</div>
             </div>
-            <div class="row">
-              <div class="lab">BUILD</div>
-              <div class="txt">A custom fullstack app using Gemini API as a real-time streaming dietitian agent to draft
-                personalized meal structures and coordinate automatically with schedules.</div>
-            </div>
-            <div class="row impact">
-              <div class="lab">IMPACT</div>
-              <div class="txt">100% real-time streaming diet adjustments with calendar syncing.</div>
+            <div class="about-right" data-speed="clamp(1.02)">
+              <div class="about-bio">
+                <p>I’m a Fullstack Developer who turns ideas into scalable, real-world products. I enjoy building clean
+                  systems, exploring new technologies, and solving complex problems with elegant code.</p>
+                <p>With a strong foundation in modern web technologies and cloud tools, I focus on writing maintainable
+                  code and creating impactful digital experiences.</p>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </section>
 
-      <!-- CASE 03 -->
-      <div class="case">
-        <div class="case-left">
-          <div class="case-idx">03 / 03</div>
-          <h3 class="case-title">Mock.io</h3>
-          <p class="case-pos">P2P interview preparation platform leveraging AI to parse resumes and tailor question
-            pipelines in seconds.</p>
-          <div class="stack-tags">
-            <span>Node.js</span><span>Express.js</span><span>MongoDB</span>
+        <!-- ============ PROJECTS ============ -->
+        <section id="projects" class="segment-card">
+          <div class="projects-head">
+            <div class="eyebrow">SELECTED BUILDS</div>
+            <h2 class="title">PROOF</h2>
           </div>
-          <div class="case-links">
-            <a href="https://github.com/Binit-S?tab=repositories" target="_blank" rel="noopener">VIEW_REPO ↗</a>
-            <a href="#contact">ASK_ME_ABOUT_IT →</a>
+
+          <!-- CASE 01 -->
+          <div class="case">
+            <div class="case-left" data-speed="clamp(0.98)">
+              <div class="case-idx">01 / 03</div>
+              <h3 class="case-title">Supply Chain<br>Nexus</h3>
+              <p class="case-pos">AI-powered logistics dashboard that turns hours of manual risk-scanning into a
+                2-minute
+                automated read.</p>
+              <div class="stack-tags">
+                <span>React</span><span>Next.js</span><span>Gemini API</span><span>Firebase</span><span>Google Cloud
+                  Run</span>
+              </div>
+              <div class="case-links">
+                <a href="https://github.com/Binit-S/supply-chain-nexus" target="_blank" rel="noopener">VIEW_REPO ↗</a>
+                <a href="#contact">ASK_ME_ABOUT_IT →</a>
+              </div>
+            </div>
+            <div class="case-right" data-speed="clamp(1.02)">
+              <div class="pbi">
+                <div class="row">
+                  <div class="lab">PROBLEM</div>
+                  <div class="txt">Supply chains get blindsided — disruptions surface in news cycles long after they've
+                    already cost a shipment.</div>
+                </div>
+                <div class="row">
+                  <div class="lab">BUILD</div>
+                  <div class="txt">A dashboard that scores geopolitical news 0–100 with Gemini AI, routing operators to
+                    alternative transport options with one-click approval.</div>
+                </div>
+                <div class="row impact">
+                  <div class="lab">IMPACT</div>
+                  <div class="txt">Detection time cut from hours to under 2 minutes.</div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="case-right">
-          <div class="pbi">
-            <div class="row">
-              <div class="lab">PROBLEM</div>
-              <div class="txt">Traditional interview practice is generic and fails to test applicants against their
-                specific candidate resume details and target job descriptions.</div>
+
+          <!-- CASE 02 -->
+          <div class="case">
+            <div class="case-left" data-speed="clamp(1.02)">
+              <div class="case-idx">02 / 03</div>
+              <h3 class="case-title">NutriSync</h3>
+              <p class="case-pos">Smart health coach delivering real-time dietary adaptation and symptom tracking for
+                people
+                with variable routines.</p>
+              <div class="stack-tags">
+                <span>Next.js</span><span>Python</span><span>Firebase</span><span>Gemini API</span><span>Docker</span>
+              </div>
+              <div class="case-links">
+                <a href="https://github.com/Binit-S/nutrisync" target="_blank" rel="noopener">VIEW_REPO ↗</a>
+                <a href="#contact">ASK_ME_ABOUT_IT →</a>
+              </div>
             </div>
-            <div class="row">
-              <div class="lab">BUILD</div>
-              <div class="txt">A Node.js &amp; MongoDB peer platform with dynamic resume parsing that auto-generates
-                custom candidate-specific question sets for interview swaps.</div>
-            </div>
-            <div class="row impact">
-              <div class="lab">IMPACT</div>
-              <div class="txt">Spins up custom-tailored candidate workspaces in under 30 seconds.</div>
+            <div class="case-right" data-speed="clamp(0.98)">
+              <div class="pbi">
+                <div class="row">
+                  <div class="lab">PROBLEM</div>
+                  <div class="txt">People struggle with rigid diets that don't adapt to daily schedule shifts, sudden
+                    symptom spikes, or real-time pantry inventory changes.</div>
+                </div>
+                <div class="row">
+                  <div class="lab">BUILD</div>
+                  <div class="txt">A custom fullstack app using Gemini API as a real-time streaming dietitian agent to
+                    draft
+                    personalized meal structures and coordinate automatically with schedules.</div>
+                </div>
+                <div class="row impact">
+                  <div class="lab">IMPACT</div>
+                  <div class="txt">100% real-time streaming diet adjustments with calendar syncing.</div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="more-row">
-        <div class="l">Expanding tech horizons with new AI-fullstack projects in progress.</div>
-        <a href="archive.html" class="btn-outline">ENTER_LABS ↗</a>
-      </div>
-    </section>
+          <!-- CASE 03 -->
+          <div class="case">
+            <div class="case-left" data-speed="clamp(0.98)">
+              <div class="case-idx">03 / 03</div>
+              <h3 class="case-title">Mock.io</h3>
+              <p class="case-pos">P2P interview preparation platform leveraging AI to parse resumes and tailor question
+                pipelines in seconds.</p>
+              <div class="stack-tags">
+                <span>Node.js</span><span>Express.js</span><span>MongoDB</span>
+              </div>
+              <div class="case-links">
+                <a href="https://github.com/Binit-S?tab=repositories" target="_blank" rel="noopener">VIEW_REPO ↗</a>
+                <a href="#contact">ASK_ME_ABOUT_IT →</a>
+              </div>
+            </div>
+            <div class="case-right" data-speed="clamp(1.02)">
+              <div class="pbi">
+                <div class="row">
+                  <div class="lab">PROBLEM</div>
+                  <div class="txt">Traditional interview practice is generic and fails to test applicants against their
+                    specific candidate resume details and target job descriptions.</div>
+                </div>
+                <div class="row">
+                  <div class="lab">BUILD</div>
+                  <div class="txt">A Node.js &amp; MongoDB peer platform with dynamic resume parsing that auto-generates
+                    custom candidate-specific question sets for interview swaps.</div>
+                </div>
+                <div class="row impact">
+                  <div class="lab">IMPACT</div>
+                  <div class="txt">Spins up custom-tailored candidate workspaces in under 30 seconds.</div>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    <!-- ============ PROOF / SKILLS ============ -->
-    <section id="proof" class="segment-card">
-      <div class="eyebrow">TECH STACK</div>
-      <h2 class="title">CAPABILITIES</h2>
+          <div class="more-row">
+            <div class="l">Expanding tech horizons with new AI-fullstack projects in progress.</div>
+            <a href="archive.html" class="btn-outline">ENTER_LABS ↗</a>
+          </div>
+        </section>
 
-      <div class="proof-grid">
-        <div class="pcell">
-          <div class="ptitle">/ FRONTEND</div>
-          <div class="stack-line">React · Next.js · Tailwind CSS</div>
-          <div class="used-in">Used in <b>Supply Chain Nexus</b>, <b>NutriSync</b></div>
-        </div>
-        <div class="pcell">
-          <div class="ptitle">/ BACKEND</div>
-          <div class="stack-line">Node.js · Express.js · MongoDB · MySQL · Java</div>
-          <div class="used-in">Used in <b>Mock.io</b>, Nexus API + auth layer</div>
-        </div>
-        <div class="pcell">
-          <div class="ptitle">/ AI &amp; CLOUD</div>
-          <div class="stack-line">Gemini API · Google Cloud Run · Firebase · Docker</div>
-          <div class="used-in">Live in production on <b>2 of 3</b> shipped projects</div>
-        </div>
-        <div class="pcell">
-          <div class="ptitle">/ TOOLS</div>
-          <div class="stack-line">Figma · Illustrator · DaVinci · Antigravity/Codex</div>
-          <div class="used-in">Every project starts here, <b>before</b> a line of code</div>
-        </div>
-      </div>
+        <!-- ============ PROOF / SKILLS ============ -->
 
-      <div class="tag-strip">
-        <span class="pill lead">./Full-Stack Developer</span>
-        <span class="pill">./Hackathon Finalist</span>
-        <span class="pill">./Design-Minded Engineer</span>
-        <span class="pill">./Ships to Production</span>
-      </div>
-    </section>
+        <!-- ============ PROOF / SKILLS ============ -->
+        <section id="proof" class="segment-card">
+          <div class="eyebrow">TECH STACK</div>
+          <h2 class="title">CAPABILITIES</h2>
 
-    <!-- ============ CONTACT ============ -->
-    <section id="contact">
-      <!-- Top Row: Ready to Build Impact -->
-      <div class="contact-top">
-        <h2 class="contact-main-title">
-          READY TO<br>
-          <span class="text-orange">BUILD IMPACT.</span>
-        </h2>
-        <div class="contact-top-links">
-          <a class="contact-top-link" href="mailto:Binitsaha91@gmail.com">
-            <span>EMAIL</span>
-            <span>↗</span>
-          </a>
-          <a class="contact-top-link" href="https://linkedin.com/in/binit-saha-5557401a1/" target="_blank" rel="noopener">
-            <span>LINKEDIN</span>
-            <span>↗</span>
-          </a>
-          <a class="contact-top-link" href="https://github.com/Binit-S" target="_blank" rel="noopener">
-            <span>GITHUB</span>
-            <span>↗</span>
-          </a>
-        </div>
-      </div>
+          <div class="proof-grid">
+            <div class="pcell">
+              <div class="ptitle">/ FRONTEND</div>
+              <div class="stack-line">React · Next.js · Tailwind CSS</div>
+              <div class="used-in">Used in <b>Supply Chain Nexus</b>, <b>NutriSync</b></div>
+            </div>
+            <div class="pcell">
+              <div class="ptitle">/ BACKEND</div>
+              <div class="stack-line">Node.js · Express.js · MongoDB · MySQL · Java</div>
+              <div class="used-in">Used in <b>Mock.io</b>, Nexus API + auth layer</div>
+            </div>
+            <div class="pcell">
+              <div class="ptitle">/ AI &amp; CLOUD</div>
+              <div class="stack-line">Gemini API · Google Cloud Run · Firebase · Docker</div>
+              <div class="used-in">Live in production on <b>2 of 3</b> shipped projects</div>
+            </div>
+            <div class="pcell">
+              <div class="ptitle">/ TOOLS</div>
+              <div class="stack-line">Figma · Illustrator · DaVinci · Antigravity/Codex</div>
+              <div class="used-in">Every project starts here, <b>before</b> a line of code</div>
+            </div>
+          </div>
 
-      <!-- Bottom Orange Banner -->
-      <div class="contact-banner">
-        <div class="banner-grid">
-          <!-- Column 1: CTA and Download -->
-          <div class="banner-col status-col">
-            <p class="status-text">
-              Available for freelance, full-time<br>
-              or exciting projects.<br>
-              Let's create impact together.
-            </p>
-            <a href="Binit_Saha_Resume.pdf" target="_blank" class="resume-btn-new">
-              <span class="btn-arrow-box">↗</span>
-              <span class="btn-text">DOWNLOAD RESUME</span>
-              <span class="btn-arrow-small">↗</span>
+          <div class="tag-strip">
+            <span class="pill lead">./Full-Stack Developer</span>
+            <span class="pill">./Hackathon Finalist</span>
+            <span class="pill">./Design-Minded Engineer</span>
+            <span class="pill">./Ships to Production</span>
+          </div>
+        </section>
+
+        <!-- ============ CONTACT ============ -->
+        <section id="contact">
+          <!-- Top Row: Ready to Build Impact -->
+          <div class="contact-top">
+            <h2 class="contact-main-title">
+              READY TO<br>
+              <span class="text-orange">BUILD IMPACT.</span>
+            </h2>
+            <div class="contact-top-links">
+              <a class="contact-top-link" href="mailto:Binitsaha91@gmail.com">
+                <span>EMAIL</span>
+                <span>↗</span>
+              </a>
+              <a class="contact-top-link" href="https://linkedin.com/in/binit-saha-5557401a1/" target="_blank"
+                rel="noopener">
+                <span>LINKEDIN</span>
+                <span>↗</span>
+              </a>
+              <a class="contact-top-link" href="https://github.com/Binit-S" target="_blank" rel="noopener">
+                <span>GITHUB</span>
+                <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Bottom Orange Banner -->
+          <div class="contact-banner">
+            <div class="banner-grid">
+              <!-- Column 1: CTA and Download -->
+              <div class="banner-col status-col">
+                <p class="status-text">
+                  Available for freelance, full-time<br>
+                  or exciting projects.<br>
+                  Let's create impact together.
+                </p>
+                <a href="Binit_Saha_Resume.pdf" target="_blank" class="resume-btn-new">
+                  <span class="btn-arrow-box">↗</span>
+                  <span class="btn-text">DOWNLOAD RESUME</span>
+                  <span class="btn-arrow-small">↗</span>
+                </a>
+              </div>
+
+              <!-- Column 2: Navigation -->
+              <div class="banner-col nav-col">
+                <div class="col-label">NAVIGATION</div>
+                <ul class="banner-nav-links">
+                  <li><a href="#hero">Home</a></li>
+                  <li><a href="#about">About</a></li>
+                  <li><a href="#projects">Work</a></li>
+                  <li><a href="#proof">Stack</a></li>
+                  <li><a href="archive.html">Archive</a></li>
+                </ul>
+              </div>
+
+              <!-- Column 3: Info -->
+              <div class="banner-col info-col">
+                <div class="col-label">INFO</div>
+                <ul class="banner-info-list">
+                  <li>Available for work</li>
+                  <li>Based in India</li>
+                  <li>Open to relocate</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Giant Connect Footer Text -->
+            <a href="mailto:Binitsaha91@gmail.com" class="giant-connect-text">
+              <span>LET'S CONNECT</span> <span class="giant-arrow">↗</span>
             </a>
           </div>
-
-          <!-- Column 2: Navigation -->
-          <div class="banner-col nav-col">
-            <div class="col-label">NAVIGATION</div>
-            <ul class="banner-nav-links">
-              <li><a href="#hero">Home</a></li>
-              <li><a href="#projects">Work</a></li>
-              <li><a href="#proof">Stack</a></li>
-              <li><a href="archive.html">Archive</a></li>
-            </ul>
-          </div>
-
-          <!-- Column 3: Info -->
-          <div class="banner-col info-col">
-            <div class="col-label">INFO</div>
-            <ul class="banner-info-list">
-              <li>Available for work</li>
-              <li>Based in India</li>
-              <li>Open to relocate</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Giant Connect Footer Text -->
-        <a href="mailto:Binitsaha91@gmail.com" class="giant-connect-text">
-          LET'S CONNECT ↗
-        </a>
+        </section>
       </div>
-    </section>
+    </div>
   </div>
 
   <!-- Full Screen Menu Overlay (Retained for backwards compatibility/archives layout) -->
