@@ -2,7 +2,8 @@ export const experience = [
   {
     period: 'JUL 2026 — PRESENT',
     title: 'Software Engineer Intern',
-    org: 'Cimba',
+    org: 'Cimba AI',
+    url: 'https://www.cimba.ai/',
     note: 'Currently working here',
   },
   {

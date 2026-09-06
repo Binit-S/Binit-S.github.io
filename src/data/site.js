@@ -5,7 +5,7 @@ export const site = {
   location: 'Based in India',
   email: 'Binitsaha91@gmail.com',
   resume: '/Binit_Saha_Resume.pdf',
-  archive: '/archive',
+  archive: '/archive/',
 };
 
 export const nav = [

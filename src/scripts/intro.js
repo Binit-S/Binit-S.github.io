@@ -1,4 +1,5 @@
 const DURATION = 3500;
+const FONT_TIMEOUT = 1500;
 
 // The lock-up slides left by half the overshoot so the mark lands centred.
 function setOffset(intro) {
@@ -9,6 +10,14 @@ function setOffset(intro) {
   const markSize = parseFloat(getComputedStyle(span).fontSize) * 0.5;
   const off = (word.getBoundingClientRect().width + markSize - lock.getBoundingClientRect().width) / 2;
   intro.style.setProperty('--off', `${off.toFixed(1)}px`);
+}
+
+function fontReady() {
+  if (!document.fonts) return Promise.resolve();
+  return Promise.race([
+    document.fonts.load("1em 'Anton'").then(() => document.fonts.ready),
+    new Promise((resolve) => setTimeout(resolve, FONT_TIMEOUT)),
+  ]);
 }
 
 export default function playIntro(lenis) {
@@ -23,7 +32,10 @@ export default function playIntro(lenis) {
 
   window.scrollTo(0, 0);
   lenis?.stop();
-  setOffset(intro);
-  document.fonts?.ready.then(() => setOffset(intro));
-  setTimeout(end, DURATION);
+
+  fontReady().then(() => {
+    setOffset(intro);
+    intro.classList.add('play');
+    setTimeout(end, DURATION);
+  });
 }
