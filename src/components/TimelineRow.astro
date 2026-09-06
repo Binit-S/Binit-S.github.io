@@ -1,0 +1,66 @@
+---
+const { period, title, org, note } = Astro.props;
+---
+
+<div class="row">
+  <div class="period">{period}</div>
+  <div>
+    <div class="title">{title}</div>
+    {org && <div class="org">{org}</div>}
+  </div>
+  <div class="note">{note}</div>
+</div>
+
+<style>
+  .row {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr) auto;
+    gap: 40px;
+    align-items: baseline;
+    padding: 30px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .row:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .period {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+  }
+
+  .title {
+    font-size: clamp(18px, 1.9vw, 26px);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+
+  .org {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--body);
+    margin-top: 8px;
+  }
+
+  .note {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  @media (max-width: 720px) {
+    .row {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .note {
+      text-align: left;
+    }
+  }
+</style>

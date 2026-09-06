@@ -1,0 +1,191 @@
+---
+import { nav, site } from '../data/site.js';
+
+// Section anchors only resolve on the home page; elsewhere they need to go there first.
+const onHome = Astro.url.pathname === '/';
+const link = (href) => (href.startsWith('#') && !onHome ? `/${href}` : href);
+---
+
+<nav data-nav>
+  <a class="brand" href={link('#hero')}>{site.brand}</a>
+
+  <div class="right">
+    <div class="links">
+      {
+        nav.map((item) => (
+          <a href={link(item.href)} class:list={{ active: item.href === Astro.url.pathname }}>
+            {item.label}
+          </a>
+        ))
+      }
+    </div>
+
+    <button class="toggle" data-nav-toggle aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+
+    <div class="panel" data-nav-panel>
+      {nav.map((item) => <a href={link(item.href)}>{item.label}</a>)}
+    </div>
+  </div>
+</nav>
+
+<style>
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 20px var(--pad-x);
+    background: rgba(11, 11, 11, 0.6);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .brand {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .links {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    transition: opacity 0.38s ease, transform 0.38s var(--ease);
+  }
+
+  .links a {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  .links a:hover {
+    color: var(--text);
+  }
+
+  .links a.active {
+    color: var(--orange);
+  }
+
+  .toggle {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -17px;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 2px;
+    cursor: pointer;
+    opacity: 0;
+    transform: scale(0.85);
+    pointer-events: none;
+    transition: opacity 0.38s ease, transform 0.38s var(--ease);
+  }
+
+  .toggle:hover {
+    border-color: var(--orange);
+  }
+
+  .toggle span {
+    display: block;
+    width: 15px;
+    height: 1px;
+    background: var(--text);
+  }
+
+  nav.collapsed .links {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+  }
+
+  nav.collapsed .toggle {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+
+  .panel {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 16px);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 168px;
+    padding: 18px 26px 18px 20px;
+    background: rgba(9, 9, 10, 0.96);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    opacity: 0;
+    transform: translateY(-12px);
+    pointer-events: none;
+    transition: opacity 0.34s ease, transform 0.34s var(--ease);
+  }
+
+  .panel.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .panel a {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    color: var(--body);
+    padding: 4px 0;
+  }
+
+  @media (max-width: 860px) {
+    .links {
+      display: none;
+    }
+
+    .toggle {
+      position: static;
+      margin-top: 0;
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector('[data-nav-toggle]');
+  const panel = document.querySelector('[data-nav-panel]');
+
+  toggle?.addEventListener('click', () => {
+    const open = panel.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+
+  panel?.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') panel.classList.remove('open');
+  });
+</script>

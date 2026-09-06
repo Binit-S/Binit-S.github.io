@@ -1,0 +1,90 @@
+---
+import SectionLabel from './ui/SectionLabel.astro';
+import { site } from '../data/site.js';
+---
+
+<section id="about">
+  <div class="grid">
+    <div class="head">
+      <SectionLabel>About me</SectionLabel>
+      <h2>{site.name}</h2>
+      <SectionLabel>{site.location}</SectionLabel>
+    </div>
+
+    <div class="bio">
+      <p>
+        <span class="lead">I'm</span> a CS student who enjoys building full-stack products, from the backend logic to the
+        interface people actually interact with. Most of what I know comes from hackathons, side projects, and just
+        trying things until they work.
+      </p>
+      <p>
+        I care as much about how something looks and feels as how it functions, so I spend a lot of time thinking about
+        design too, not just code. I'm still learning, still figuring things out, and genuinely enjoy the process.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    position: relative;
+    margin: 0 4vw 48px;
+    padding: 100px 6vw;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 32px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+    min-height: 380px;
+  }
+
+  .head {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  h2 {
+    font-size: clamp(48px, 7.5vw, 96px);
+    line-height: 0.9;
+    color: #fff;
+    margin: 30px 0;
+  }
+
+  .bio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .bio p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--body);
+    margin: 0;
+  }
+
+  .lead {
+    font-style: italic;
+    color: var(--orange);
+  }
+
+  @media (max-width: 860px) {
+    section {
+      padding: 70px 8vw;
+      border-radius: 24px;
+    }
+
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+</style>

@@ -1,0 +1,191 @@
+<div id="intro" aria-hidden="true">
+  <div class="lock">
+    <div class="shift">
+      <div class="word"><span>HELLO</span></div>
+      <div class="mark">
+        <svg viewBox="0 5.6 22.6 20.8" aria-hidden="true">
+          <path
+            d="M4.469 8.156v-2.25h2.25v2.25h-2.25zM15.688 5.906h2.219v2.25h-2.219v-2.25zM20.156 12.625v-4.469h2.25v8.969h-2.25v2.219h-2.25v2.25h2.25v2.25h2.25v2.219h-4.5v-2.219h-2.219v-2.25h-8.969v2.25h-2.25v2.219h-4.469v-2.219h2.25v-2.25h2.219v-2.25h-2.219v-2.219h-2.25v-8.969h2.25v4.469h2.219v-2.219h2.25v-2.25h2.25v2.25h4.469v-2.25h2.25v2.25h2.219v2.219h2.25zM8.969 14.875v-2.25h-2.25v2.25h2.25zM15.688 14.875v-2.25h-2.25v2.25h2.25z"
+          ></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="meta meta-left">FULLSTACK ENGINEER</div>
+  <div class="meta meta-right">EST. INDIA</div>
+</div>
+
+<style>
+  #intro {
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    overflow: hidden;
+    will-change: transform;
+    animation: lift 3.45s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  }
+
+  .lock {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: clamp(200px, 34vw, 420px);
+    height: clamp(76px, 12vw, 148px);
+    will-change: transform;
+    animation: out 3.45s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  }
+
+  .shift {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    flex-shrink: 0;
+    animation: off 1.55s cubic-bezier(0.65, 0, 0.35, 1) both;
+  }
+
+  .word {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .word span {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 clamp(20px, 3vw, 42px);
+    background: var(--ink);
+    color: var(--text);
+    font-family: var(--font-display);
+    font-size: clamp(40px, 6.6vw, 82px);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    will-change: transform;
+    animation: rise 0.46s var(--ease) 1.62s both;
+  }
+
+  .mark {
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    transform-origin: left center;
+    animation: mark 1.55s cubic-bezier(0.65, 0, 0.35, 1) both;
+  }
+
+  .mark svg {
+    width: 80%;
+    height: 80%;
+    display: block;
+    fill: var(--ink);
+  }
+
+  .meta {
+    position: absolute;
+    bottom: 7vh;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(11, 11, 11, 0.55);
+    animation: meta 3.45s ease forwards;
+  }
+
+  .meta-left {
+    left: 8vw;
+  }
+
+  .meta-right {
+    right: 8vw;
+  }
+
+  @keyframes lift {
+    0%,
+    82% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-101%);
+    }
+  }
+
+  @keyframes out {
+    0%,
+    80% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-14%) scale(0.97);
+    }
+  }
+
+  @keyframes mark {
+    0% {
+      width: clamp(200px, 34vw, 420px);
+      height: clamp(76px, 12vw, 148px);
+      transform: scaleX(0);
+    }
+    20%,
+    28% {
+      width: clamp(200px, 34vw, 420px);
+      height: clamp(76px, 12vw, 148px);
+      transform: scaleX(1);
+    }
+    54%,
+    66% {
+      width: clamp(76px, 12vw, 148px);
+      height: clamp(76px, 12vw, 148px);
+      transform: scaleX(1);
+    }
+    100% {
+      width: clamp(20px, 3.3vw, 41px);
+      height: clamp(20px, 3.3vw, 41px);
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes off {
+    0%,
+    28% {
+      transform: translateX(0);
+    }
+    66%,
+    100% {
+      transform: translateX(var(--off, 0px));
+    }
+  }
+
+  @keyframes rise {
+    0% {
+      transform: translateY(112%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes meta {
+    0%,
+    46% {
+      opacity: 0;
+    }
+    66%,
+    80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+</style>

@@ -1,3 +1,7 @@
+---
+title: MY VERY FIRST WEB BLOG
+date: 2026-05-23
+---
 
 
 <div style="white-space: pre; font-family: monospace; font-size: 14px; line-height: 1.35; letter-spacing: 0; background: transparent; border: none; padding: 0; margin: 20px 0; overflow-x: auto; color: #fff;">
