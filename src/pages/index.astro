@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import Intro from '../components/Intro.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Experience from '../components/Experience.astro';
+import Projects from '../components/Projects.astro';
+import Capabilities from '../components/Capabilities.astro';
+import Contact from '../components/Contact.astro';
+---
+
+<Base
+  title="Binit Saha — Software Engineer"
+  description="Fullstack engineer building AI-powered products. Selected work, stack and contact."
+  bodyClass="intro-lock"
+>
+  <Intro />
+  <Nav />
+
+  <main>
+    <Hero />
+
+    <div class="stack">
+      <div class="layer about"><About /></div>
+      <div class="layer experience"><Experience /></div>
+      <div class="rest">
+        <Projects />
+        <Capabilities />
+        <Contact />
+      </div>
+    </div>
+  </main>
+</Base>
+
+<style>
+  /* Each layer slides over the one before it; z-index sets the order. */
+  main {
+    position: relative;
+    z-index: 2;
+  }
+
+  .stack {
+    position: relative;
+    z-index: 3;
+    padding-top: 1px;
+  }
+
+  .layer {
+    position: sticky;
+    top: 0;
+  }
+
+  .about {
+    z-index: 1;
+    padding-top: 1px;
+    background: var(--black);
+    box-shadow: 0 -40px 80px rgba(0, 0, 0, 0.75);
+  }
+
+  .experience {
+    z-index: 2;
+  }
+
+  .rest {
+    position: relative;
+    z-index: 3;
+    background: var(--black);
+  }
+</style>
+
+<script>
+  import initScroll from '../scripts/scroll.js';
+  import playIntro from '../scripts/intro.js';
+
+  playIntro(initScroll());
+</script>

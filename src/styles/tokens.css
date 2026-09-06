@@ -1,0 +1,37 @@
+:root {
+  --black: #000000;
+  --ink: #0B0B0B;
+  --surface: #0A0A0C;
+  --card: #0F1013;
+  --footer: #111212;
+  --cream: #EFEDE8;
+
+  --orange: #FC4A25;
+  --orange-hi: #FF5C39;
+  --rust: #C4300F;
+
+  --text: #F5F5F5;
+  --body: #C0C0C0;
+  --muted: #7A7A7A;
+  --line: rgba(255, 255, 255, 0.06);
+
+  --accent: var(--orange);
+
+  --font-display: 'Anton', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-body: 'Space Grotesk', sans-serif;
+
+  --pad-x: 8vw;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Light sections invert the palette; children read the same tokens. */
+.on-cream {
+  --accent: var(--rust);
+  --text: var(--ink);
+  --body: #4A4A4A;
+  --muted: #6B6B6B;
+  --line: rgba(11, 11, 11, 0.14);
+  background: var(--cream);
+  color: var(--ink);
+}

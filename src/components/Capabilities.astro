@@ -1,0 +1,61 @@
+---
+import SectionLabel from './ui/SectionLabel.astro';
+import WipeRow from './ui/WipeRow.astro';
+import Tag from './ui/Tag.astro';
+import { capabilities, pills } from '../data/capabilities.js';
+---
+
+<section id="proof" class="on-cream">
+  <SectionLabel>Tech stack</SectionLabel>
+  <h2 class="section-title">Capabilities</h2>
+
+  <div>
+    {
+      capabilities.map((row) => (
+        <WipeRow
+          columns="190px minmax(0, 1fr) auto"
+          cells={[
+            { role: 'lead', text: row.label },
+            { role: 'main', text: row.stack },
+            { role: 'meta', text: row.note },
+          ]}
+        />
+      ))
+    }
+  </div>
+
+  <div class="pills">
+    {pills.map((pill, i) => <Tag solid={i === 0}>{pill}</Tag>)}
+  </div>
+</section>
+
+<style>
+  section {
+    position: relative;
+    padding: 100px var(--pad-x) 140px;
+    overflow: hidden;
+  }
+
+  h2 {
+    margin: 12px 0 70px;
+  }
+
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 44px;
+    --tag-size: 12px;
+    --tag-pad: 12px 20px;
+  }
+
+  .pills :global(.tag) {
+    border-color: rgba(11, 11, 11, 0.2);
+    color: var(--body);
+  }
+
+  .pills :global(.tag.solid) {
+    border-color: var(--orange);
+    color: var(--ink);
+  }
+</style>

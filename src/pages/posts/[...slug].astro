@@ -1,0 +1,158 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import { formatDate } from '../../data/posts.js';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Base title={`${post.data.title} // Binit S.`} description={`Log — ${post.data.title}`}>
+  <Nav />
+
+  <div class="layout">
+    <a class="back" href="/archive"><span>↖</span> LOGS</a>
+
+    <header>
+      <h1>{post.data.title}</h1>
+      <div class="date">{formatDate(post.data.date)}</div>
+    </header>
+
+    <article class="body">
+      <Content />
+    </article>
+
+    <footer>
+      <div class="signature">~written by Binit</div>
+      <div class="line"></div>
+    </footer>
+  </div>
+</Base>
+
+<style>
+  .layout {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10vh 6vw 4vh;
+  }
+
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8vh;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .back span {
+    color: var(--orange);
+  }
+
+  header {
+    margin-bottom: 6vh;
+    padding-bottom: 4vh;
+    border-bottom: 1px solid var(--line);
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 5vw, 68px);
+    line-height: 1.1;
+    margin: 0 0 2vh;
+  }
+
+  .date {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--orange);
+  }
+
+  .body {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    line-height: 1.85;
+    color: var(--body);
+  }
+
+  .body :global(p) {
+    margin: 0 0 24px;
+  }
+
+  .body :global(h2),
+  .body :global(h3) {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .body :global(h2) {
+    font-size: clamp(24px, 2.6vw, 36px);
+    margin: 48px 0 20px;
+  }
+
+  .body :global(h3) {
+    font-size: clamp(20px, 2vw, 28px);
+    margin: 36px 0 16px;
+  }
+
+  .body :global(a) {
+    color: var(--orange);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .body :global(pre) {
+    margin: 32px 0;
+    padding: 20px;
+    background: #111111 !important;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+
+  .body :global(code) {
+    font-family: var(--font-mono);
+    font-size: 14px;
+  }
+
+  .body :global(img) {
+    display: block;
+    margin: 40px auto;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+  }
+
+  footer {
+    margin: 80px 0 100px;
+  }
+
+  .signature {
+    margin-bottom: 12px;
+    text-align: right;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .line {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15);
+  }
+</style>
+
+<script>
+  import initScroll from '../../scripts/scroll.js';
+
+  initScroll();
+</script>

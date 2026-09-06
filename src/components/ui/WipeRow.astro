@@ -1,0 +1,112 @@
+---
+const { columns, href, cells } = Astro.props;
+---
+
+<div class="wipe" style={`--cols: ${columns}`}>
+  {
+    /* Second pass is the orange layer the hover wipe reveals. */
+    [false, true].map((isFill) => {
+      const Row = isFill || !href ? 'div' : 'a';
+      return (
+        <Row class:list={['layer', { fill: isFill }]} href={isFill ? undefined : href} aria-hidden={isFill || undefined}>
+          {cells.map((cell) => (
+            <div class={cell.role} set:html={cell.text} />
+          ))}
+        </Row>
+      );
+    })
+  }
+</div>
+
+<style>
+  .wipe {
+    position: relative;
+    border-top: 1px solid var(--line);
+  }
+
+  .wipe:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .layer {
+    display: grid;
+    grid-template-columns: var(--cols);
+    gap: 40px;
+    align-items: center;
+    padding: var(--wipe-pad, 30px 0);
+  }
+
+  .fill {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -28px;
+    right: -28px;
+    padding-left: 28px;
+    padding-right: 28px;
+    background: var(--orange);
+    color: var(--ink);
+    pointer-events: none;
+    clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+    transition: clip-path 0.42s cubic-bezier(0.1, 0.5, 0.5, 1);
+  }
+
+  .wipe:hover .fill {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .lead {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .main {
+    font-family: var(--wipe-main-font, var(--font-body));
+    font-size: var(--wipe-main-size, clamp(18px, 1.9vw, 26px));
+    font-weight: var(--wipe-main-weight, 600);
+    letter-spacing: var(--wipe-main-spacing, -0.01em);
+    text-transform: var(--wipe-main-transform, none);
+    color: var(--text);
+  }
+
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  .meta :global(b) {
+    color: var(--text);
+    font-weight: 700;
+  }
+
+  .fill .lead,
+  .fill .main,
+  .fill .meta,
+  .fill .meta :global(b) {
+    color: inherit;
+  }
+
+  .fill .lead {
+    font-weight: 700;
+  }
+
+  @media (max-width: 860px) {
+    .layer {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .meta {
+      text-align: left;
+    }
+
+    .fill {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,28 @@
+---
+const { href, external } = Astro.props;
+const rel = external ? 'noopener' : undefined;
+const target = external ? '_blank' : undefined;
+---
+
+<a class="btn" href={href} target={target} rel={rel}><slot /></a>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 15px 28px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--text);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .btn:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+  }
+</style>

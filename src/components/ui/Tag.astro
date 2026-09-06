@@ -1,0 +1,22 @@
+---
+const { solid } = Astro.props;
+---
+
+<span class:list={['tag', { solid }]}><slot /></span>
+
+<style>
+  .tag {
+    font-family: var(--font-mono);
+    font-size: var(--tag-size, 10px);
+    padding: var(--tag-pad, 6px 12px);
+    border: 1px solid var(--line);
+    color: var(--muted);
+  }
+
+  .solid {
+    background: var(--orange);
+    border-color: var(--orange);
+    color: var(--ink);
+    font-weight: 700;
+  }
+</style>
