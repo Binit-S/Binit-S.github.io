@@ -16,6 +16,18 @@
 </div>
 
 <style>
+  /* Held at frame 0 until the display font is measurable — the lock-up is
+     positioned from the rendered width of the word. */
+  #intro,
+  #intro * {
+    animation-play-state: paused;
+  }
+
+  #intro.play,
+  #intro.play * {
+    animation-play-state: running;
+  }
+
   #intro {
     position: fixed;
     inset: 0;

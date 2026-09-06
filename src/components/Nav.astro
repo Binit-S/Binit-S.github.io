@@ -2,8 +2,10 @@
 import { nav, site } from '../data/site.js';
 
 // Section anchors only resolve on the home page; elsewhere they need to go there first.
-const onHome = Astro.url.pathname === '/';
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const onHome = path === '/';
 const link = (href) => (href.startsWith('#') && !onHome ? `/${href}` : href);
+const isCurrent = (href) => href.replace(/\/+$/, '') === path;
 ---
 
 <nav data-nav>
@@ -13,7 +15,7 @@ const link = (href) => (href.startsWith('#') && !onHome ? `/${href}` : href);
     <div class="links">
       {
         nav.map((item) => (
-          <a href={link(item.href)} class:list={{ active: item.href === Astro.url.pathname }}>
+          <a href={link(item.href)} class:list={{ active: isCurrent(item.href) }}>
             {item.label}
           </a>
         ))
@@ -25,7 +27,14 @@ const link = (href) => (href.startsWith('#') && !onHome ? `/${href}` : href);
     </button>
 
     <div class="panel" data-nav-panel>
-      {nav.map((item) => <a href={link(item.href)}>{item.label}</a>)}
+      {
+        nav.map((item) => (
+          <a href={link(item.href)} class:list={{ active: isCurrent(item.href) }}>
+            <span>{item.label}</span>
+            <span class="ar">→</span>
+          </a>
+        ))
+      }
     </div>
   </div>
 </nav>
@@ -42,7 +51,7 @@ const link = (href) => (href.startsWith('#') && !onHome ? `/${href}` : href);
     flex-wrap: wrap;
     width: 100%;
     padding: 20px var(--pad-x);
-    background: rgba(11, 11, 11, 0.6);
+    background: rgba(11, 11, 11, 0.88);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--line);
   }
@@ -72,11 +81,12 @@ const link = (href) => (href.startsWith('#') && !onHome ? `/${href}` : href);
     font-family: var(--font-mono);
     font-size: 11px;
     letter-spacing: 0.1em;
-    color: var(--muted);
+    color: #c8c8c8;
+    transition: color 0.2s ease;
   }
 
   .links a:hover {
-    color: var(--text);
+    color: var(--orange);
   }
 
   .links a.active {
@@ -131,20 +141,20 @@ const link = (href) => (href.startsWith('#') && !onHome ? `/${href}` : href);
   .panel {
     position: absolute;
     right: 0;
-    top: calc(100% + 16px);
+    top: calc(100% + 14px);
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    min-width: 168px;
-    padding: 18px 26px 18px 20px;
-    background: rgba(9, 9, 10, 0.96);
+    min-width: 196px;
+    padding: 6px;
+    background: rgba(9, 9, 10, 0.98);
     backdrop-filter: blur(14px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 4px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
     opacity: 0;
-    transform: translateY(-12px);
+    transform: translateY(-10px);
     pointer-events: none;
-    transition: opacity 0.34s ease, transform 0.34s var(--ease);
+    transition: opacity 0.28s ease, transform 0.28s var(--ease);
   }
 
   .panel.open {
@@ -154,11 +164,37 @@ const link = (href) => (href.startsWith('#') && !onHome ? `/${href}` : href);
   }
 
   .panel a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 11px 12px;
+    border-radius: 2px;
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 0.14em;
-    color: var(--body);
-    padding: 4px 0;
+    color: #c8c8c8;
+    transition: background 0.18s ease, color 0.18s ease;
+  }
+
+  .panel a:hover {
+    background: rgba(252, 74, 37, 0.1);
+    color: var(--orange);
+  }
+
+  .panel a.active {
+    color: var(--orange);
+  }
+
+  .panel .ar {
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+
+  .panel a:hover .ar {
+    opacity: 1;
+    transform: none;
   }
 
   @media (max-width: 860px) {
@@ -180,12 +216,24 @@ const link = (href) => (href.startsWith('#') && !onHome ? `/${href}` : href);
   const toggle = document.querySelector('[data-nav-toggle]');
   const panel = document.querySelector('[data-nav-panel]');
 
-  toggle?.addEventListener('click', () => {
-    const open = panel.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(open));
-  });
+  if (toggle && panel) {
+    const set = (open) => {
+      panel.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    };
 
-  panel?.addEventListener('click', (e) => {
-    if (e.target.tagName === 'A') panel.classList.remove('open');
-  });
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      set(!panel.classList.contains('open'));
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!panel.contains(e.target)) set(false);
+      else if (e.target.closest('a')) set(false);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') set(false);
+    });
+  }
 </script>

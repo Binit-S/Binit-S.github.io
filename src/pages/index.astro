@@ -16,13 +16,16 @@ import Contact from '../components/Contact.astro';
   bodyClass="intro-lock"
 >
   <Intro />
+  <span id="hero" class="anchor"></span>
   <Nav />
 
   <main>
     <Hero />
 
     <div class="stack">
+      <span id="about" class="anchor"></span>
       <div class="layer about"><About /></div>
+      <span id="experience" class="anchor"></span>
       <div class="layer experience"><Experience /></div>
       <div class="rest">
         <Projects />
@@ -34,6 +37,13 @@ import Contact from '../components/Contact.astro';
 </Base>
 
 <style>
+  /* Scroll targets. The sections are sticky, so once pinned their own
+     position reports where they are stuck, not where they live. */
+  .anchor {
+    display: block;
+    height: 0;
+  }
+
   /* Each layer slides over the one before it; z-index sets the order. */
   main {
     position: relative;

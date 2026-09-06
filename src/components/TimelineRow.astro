@@ -1,12 +1,24 @@
 ---
-const { period, title, org, note } = Astro.props;
+const { period, title, org, url, note } = Astro.props;
 ---
 
 <div class="row">
   <div class="period">{period}</div>
   <div>
     <div class="title">{title}</div>
-    {org && <div class="org">{org}</div>}
+    {
+      org && (
+        <div class="org">
+          {url ? (
+            <a href={url} target="_blank" rel="noopener">
+              {org} <span class="ar">↗</span>
+            </a>
+          ) : (
+            org
+          )}
+        </div>
+      )
+    }
   </div>
   <div class="note">{note}</div>
 </div>
@@ -44,6 +56,18 @@ const { period, title, org, note } = Astro.props;
     font-size: 12px;
     color: var(--body);
     margin-top: 8px;
+  }
+
+  .org a {
+    transition: color 0.2s ease;
+  }
+
+  .org a:hover {
+    color: var(--accent);
+  }
+
+  .ar {
+    font-size: 10px;
   }
 
   .note {
